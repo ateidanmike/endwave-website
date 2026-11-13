@@ -730,3 +730,33 @@ symbol { overflow: visible; }
   .sms-stats .mini:first-child { grid-column: span 2; }
   .phone { min-height: 300px; }
 }
+
+/* ---------- Capacity delivery options (fibre · Starlink · point-to-point) ---------- */
+.deliver { margin-top: 64px; }
+.deliver__head { max-width: 640px; margin-bottom: 28px; }
+.deliver__kicker { color: var(--blue); text-transform: uppercase; margin-bottom: 10px; }
+.deliver__head h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+.deliver__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.dopt { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s; }
+.dopt:hover { transform: translateY(-5px); border-color: rgba(42,128,194,.4); box-shadow: 0 24px 40px -28px rgba(27,40,83,.45); }
+.dopt__ill { height: 76px; margin-bottom: 18px; }
+.dopt__ill svg { height: 100%; width: auto; overflow: visible; }
+.dopt__tag { color: var(--blue); }
+.dopt h4 { color: var(--ink); font-size: 1.1rem; margin: 6px 0 8px; letter-spacing: -0.01em; }
+.dopt p { font-size: .92rem; line-height: 1.55; }
+.dopt__meta { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.dopt__meta li { padding: 5px 10px; border-radius: 999px; background: var(--tint); color: var(--navy); font-size: .7rem; }
+.dl-line { fill: none; stroke: var(--navy); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dl-box { fill: #fff; stroke: var(--navy); stroke-width: 2; }
+.dl-panel { fill: var(--cyan); opacity: .85; }
+.dl-node { fill: var(--blue); }
+.dl-dish { fill: var(--navy); }
+.dl-ground { stroke: var(--line); stroke-width: 2; }
+.dl-flow { fill: none; stroke: var(--cyan); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 12 160; animation: flow 2.4s linear infinite; }
+.dl-flow--h { stroke-dasharray: 10 110; animation-duration: 1.8s; }
+.dl-beam { fill: none; stroke: var(--blue); stroke-width: 2; stroke-dasharray: 3 5; animation: beam 1.2s linear infinite; }
+.dl-sat { animation: drift 4s ease-in-out infinite; transform-box: fill-box; }
+@keyframes beam { to { stroke-dashoffset: -16; } }
+@keyframes drift { 0%, 100% { transform: translateX(-4px); } 50% { transform: translateX(4px); } }
+@media (max-width: 900px) { .deliver__grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .dl-flow, .dl-beam, .dl-sat { animation: none; } }

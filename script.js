@@ -20,15 +20,15 @@ const CONFIG = {
   countries: {
     ke: { name: "Kenya",    cur: "KES", fx: 129,  round: 1, email: "kenya@endwaveafrica.com",
           cities: "Nairobi · Mombasa · Kisumu", currency: "KES or USD",
-          delivery: "Fibre hand-off at tower, PoP or data centre",
+          delivery: "Fibre, Starlink or point-to-point",
           dcs: "ADC Kenya · iColo NBO1 · iColo NBO2" },
     ug: { name: "Uganda",   cur: "UGX", fx: 3650, round: 50, email: "uganda@endwaveafrica.com",
           cities: "Kampala · Gulu · Mbarara", currency: "UGX or USD",
-          delivery: "Fibre hand-off via Kenya cross-border routes",
+          delivery: "Fibre (cross-border), Starlink or point-to-point",
           dcs: "Raxio Uganda" },
     tz: { name: "Tanzania", cur: "TZS", fx: 2650, round: 10, email: "tz@endwaveafrica.com",
           cities: "Dar es Salaam · Arusha · Dodoma · Mwanza", currency: "TZS or USD",
-          delivery: "Fibre hand-off at coastal and inland sites",
+          delivery: "Fibre, Starlink or point-to-point",
           dcs: "Raxio Tanzania" },
   },
   // Set to your form handler (Formspree, Netlify, your own API…).
@@ -219,7 +219,7 @@ function renderTiers() {
     </div>`).join("");
   $$(".tier").forEach(t => t.addEventListener("click", () => {
     const b = CONFIG.bands[+t.dataset.i];
-    setMbps(b.min === 50 ? 100 : b.min);
+    setMbps(b.min);
   }));
 }
 
@@ -273,6 +273,7 @@ function syncServiceFields() {
   const cap = serviceBoxes.find(b => b.value === "capacity").checked;
   $("#capField").hidden = !cap;
   $("#siteField").hidden = !cap;
+  $("#deliveryField").hidden = !cap;
 }
 function selectService(key) {
   const box = serviceBoxes.find(b => b.value === key);
