@@ -66,7 +66,7 @@ const sectionObserver = new IntersectionObserver(entries => {
     $$(".nav__links a").forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === "#" + e.target.id));
   });
 }, { rootMargin: "-45% 0px -50% 0px" });
-["model", "coverage", "datacentres", "pricing", "process", "faq"].forEach(id => sectionObserver.observe(document.getElementById(id)));
+["services", "capacity", "coverage", "communications", "platforms", "faq"].forEach(id => sectionObserver.observe(document.getElementById(id)));
 
 /* ---------- Reveal on scroll (with stagger for siblings) ---------- */
 const revealObserver = new IntersectionObserver(entries => {
@@ -264,7 +264,57 @@ $$(".stepper__btn").forEach(btn => btn.addEventListener("click", () => {
 $("#calcCta").addEventListener("click", () => {
   $("#fCapacity").value = mbps;
   $("#fCountry").value = currentCountry;
+  selectService("capacity");
 });
+
+/* ---------- Service selection (chips + "get a quote" buttons) ---------- */
+const serviceBoxes = $$('input[name="services"]');
+function syncServiceFields() {
+  const cap = serviceBoxes.find(b => b.value === "capacity").checked;
+  $("#capField").hidden = !cap;
+  $("#siteField").hidden = !cap;
+}
+function selectService(key) {
+  const box = serviceBoxes.find(b => b.value === key);
+  if (box) box.checked = true;
+  $('[data-field="services"]').classList.remove("is-invalid");
+  syncServiceFields();
+}
+serviceBoxes.forEach(b => b.addEventListener("change", syncServiceFields));
+$$("[data-service]").forEach(a => a.addEventListener("click", () => selectService(a.dataset.service)));
+syncServiceFields();
+
+/* ---------- Service mock animations ---------- */
+// VoIP call timer
+const callTimer = $("#callTimer");
+if (callTimer) {
+  let sec = 0;
+  setInterval(() => {
+    sec = (sec + 1) % 3600;
+    callTimer.textContent = String(Math.floor(sec / 60)).padStart(2, "0") + ":" + String(sec % 60).padStart(2, "0");
+  }, 1000);
+}
+// Call-centre queue drifts
+const qWait = $("#qWait");
+if (qWait) setInterval(() => { qWait.textContent = 2 + Math.floor(Math.random() * 5); }, 2600);
+// Counters with thousands separators
+const jsCountObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target, to = +el.dataset.to, start = performance.now();
+  const tick = now => {
+    const t = Math.min((now - start) / 1800, 1);
+    el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - t, 3))));
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  jsCountObs.unobserve(el);
+}), { threshold: .5 });
+$$(".js-count").forEach(el => jsCountObs.observe(el));
+// Feature mocks animate when visible
+const mockObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add("is-live"); mockObs.unobserve(e.target); }
+}), { threshold: .3 });
+$$(".mock").forEach(el => mockObs.observe(el));
 
 /* ---------- FAQ: only one open at a time ---------- */
 $$(".acc").forEach(d => d.addEventListener("toggle", () => {
@@ -276,9 +326,11 @@ const form = $("#requestForm");
 const status = $("#formStatus");
 const success = $("#formSuccess");
 
+const wantsCapacity = () => serviceBoxes.find(b => b.value === "capacity").checked;
 const validators = {
-  capacity: v => +v >= 50 || "Capacity must be at least 50 Mbps",
-  site: v => v.trim().length > 2 || "Tell us where the capacity should go",
+  services: () => serviceBoxes.some(b => b.checked) || "Pick at least one service",
+  capacity: v => !wantsCapacity() || +v >= 50 || "Capacity must be at least 50 Mbps",
+  site: v => !wantsCapacity() || v.trim().length > 2 || "Tell us where the capacity should go",
   name: v => v.trim().length > 1 || "Your name",
   email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "A valid email",
   phone: v => v.replace(/\D/g, "").length >= 9 || "A valid mobile number",
@@ -286,11 +338,13 @@ const validators = {
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
+  const fd = new FormData(form);
+  const data = Object.fromEntries(fd);
+  data.services = fd.getAll("services");
   const missing = [];
   Object.entries(validators).forEach(([key, fn]) => {
     const ok = fn(data[key] || "");
-    const field = form.elements[key].closest(".field");
+    const field = key === "services" ? $('[data-field="services"]') : form.elements[key].closest(".field");
     field.classList.toggle("is-invalid", ok !== true);
     if (ok !== true) missing.push(ok);
   });
@@ -334,6 +388,7 @@ $("#formReset").addEventListener("click", () => {
   form.reset();
   success.hidden = true;
   setCountry(currentCountry);
+  syncServiceFields();
 });
 
 /* ---------- Init ---------- */
