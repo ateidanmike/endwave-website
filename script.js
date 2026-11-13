@@ -13,19 +13,23 @@ const CONFIG = {
     { name: "Growth",     min: 150,  max: 299,   usd: 1.45 },
     { name: "Pro",        min: 300,  max: 599,   usd: 1.35 },
     { name: "Premium",    min: 600,  max: 999,   usd: 1.25 },
-    { name: "Enterprise", min: 1000, max: 10000, usd: 1.10 },
+    { name: "Enterprise", min: 1000, max: 9999,  usd: 1.10 },
+    { name: "Carrier",    min: 10000, max: 100000, usd: 0.95 },
   ],
   // Local currency per country and the FX rate used to convert from USD.
   countries: {
-    ke: { name: "Kenya",    cur: "KES", fx: 129,  round: 1,
+    ke: { name: "Kenya",    cur: "KES", fx: 129,  round: 1, email: "kenya@endwaveafrica.com",
           cities: "Nairobi · Mombasa · Kisumu", currency: "KES or USD",
-          delivery: "Fibre hand-off at tower, PoP or data centre" },
-    ug: { name: "Uganda",   cur: "UGX", fx: 3650, round: 50,
+          delivery: "Fibre hand-off at tower, PoP or data centre",
+          dcs: "ADC Kenya · iColo NBO1 · iColo NBO2" },
+    ug: { name: "Uganda",   cur: "UGX", fx: 3650, round: 50, email: "uganda@endwaveafrica.com",
           cities: "Kampala · Gulu · Mbarara", currency: "UGX or USD",
-          delivery: "Fibre hand-off via Kenya cross-border routes" },
-    tz: { name: "Tanzania", cur: "TZS", fx: 2650, round: 10,
+          delivery: "Fibre hand-off via Kenya cross-border routes",
+          dcs: "Raxio Uganda" },
+    tz: { name: "Tanzania", cur: "TZS", fx: 2650, round: 10, email: "tz@endwaveafrica.com",
           cities: "Dar es Salaam · Arusha · Dodoma · Mwanza", currency: "TZS or USD",
-          delivery: "Fibre hand-off at coastal and inland sites" },
+          delivery: "Fibre hand-off at coastal and inland sites",
+          dcs: "Raxio Tanzania" },
   },
   // Set to your form handler (Formspree, Netlify, your own API…).
   // Leave empty to show the success state without sending.
@@ -62,7 +66,7 @@ const sectionObserver = new IntersectionObserver(entries => {
     $$(".nav__links a").forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === "#" + e.target.id));
   });
 }, { rootMargin: "-45% 0px -50% 0px" });
-["model", "coverage", "pricing", "process", "faq"].forEach(id => sectionObserver.observe(document.getElementById(id)));
+["model", "coverage", "datacentres", "pricing", "process", "faq"].forEach(id => sectionObserver.observe(document.getElementById(id)));
 
 /* ---------- Reveal on scroll (with stagger for siblings) ---------- */
 const revealObserver = new IntersectionObserver(entries => {
@@ -140,6 +144,7 @@ function setCountry(code) {
     $('[data-field="cities"]', panel).textContent = c.cities;
     $('[data-field="currency"]', panel).textContent = c.currency;
     $('[data-field="delivery"]', panel).textContent = c.delivery;
+    $('[data-field="dcs"]', panel).textContent = c.dcs;
     panel.classList.remove("is-switching");
   }, 220);
 
@@ -159,11 +164,12 @@ $("#fCountry").addEventListener("change", e => setCountry(e.target.value));
 // Slider positions 0–1000 map piecewise onto the bands so each band gets equal width.
 const STOPS = [
   { p: 0,    v: 50 },
-  { p: 200,  v: 150 },
-  { p: 400,  v: 300 },
-  { p: 600,  v: 600 },
-  { p: 800,  v: 1000 },
-  { p: 1000, v: 10000 },
+  { p: 167,  v: 150 },
+  { p: 333,  v: 300 },
+  { p: 500,  v: 600 },
+  { p: 667,  v: 1000 },
+  { p: 833,  v: 10000 },
+  { p: 1000, v: 100000 },
 ];
 const range = $("#calcRange");
 let mbps = 100;
@@ -173,10 +179,10 @@ function posToMbps(p) {
     const a = STOPS[i - 1], b = STOPS[i];
     if (p <= b.p) {
       const v = a.v + (b.v - a.v) * ((p - a.p) / (b.p - a.p));
-      return v >= 1000 ? Math.round(v / 100) * 100 : Math.round(v / 10) * 10;
+      return v >= 10000 ? Math.round(v / 1000) * 1000 : v >= 1000 ? Math.round(v / 100) * 100 : Math.round(v / 10) * 10;
     }
   }
-  return 10000;
+  return 100000;
 }
 function mbpsToPos(v) {
   for (let i = 1; i < STOPS.length; i++) {
@@ -208,7 +214,7 @@ function renderTiers() {
   $("#tiers").innerHTML = CONFIG.bands.map((b, i) => `
     <div class="tier ${b === active ? "is-active" : ""}" data-i="${i}">
       <div class="tier__name">${b.name}</div>
-      <div class="tier__range">${b.min >= 1000 ? "1 Gbps +" : `${b.min} – ${b.max} Mbps`}</div>
+      <div class="tier__range">${b.min >= 10000 ? "10 – 100 Gbps" : b.min >= 1000 ? "1 – 10 Gbps" : `${b.min} – ${b.max} Mbps`}</div>
       <div class="tier__rate">${c.cur} <b>${fmt(localRate(b, c))}</b>/Mbps</div>
     </div>`).join("");
   $$(".tier").forEach(t => t.addEventListener("click", () => {
@@ -237,7 +243,7 @@ function renderCalc() {
 }
 
 function setMbps(v) {
-  mbps = Math.min(Math.max(v, 50), 10000);
+  mbps = Math.min(Math.max(v, 50), 100000);
   renderCalc();
 }
 
@@ -247,9 +253,11 @@ range.addEventListener("input", () => {
 });
 $$(".stepper__btn").forEach(btn => btn.addEventListener("click", () => {
   const dir = +btn.dataset.step;
-  const inc = mbps >= 1000 ? 500 : mbps >= 300 ? 50 : 10;
-  const next = mbps + dir * inc;
-  setMbps(dir < 0 && mbps > 1000 && next < 1000 ? 1000 : next);
+  const inc = mbps >= 10000 ? 5000 : mbps >= 1000 ? 500 : mbps >= 300 ? 50 : 10;
+  let next = mbps + dir * inc;
+  if (dir < 0 && mbps > 10000 && next < 10000) next = 10000;
+  if (dir < 0 && mbps > 1000 && next < 1000) next = 1000;
+  setMbps(next);
 }));
 
 // Carry calculator values into the request form
@@ -314,7 +322,7 @@ form.addEventListener("submit", async e => {
     status.textContent = "";
     success.hidden = false;
   } catch (err) {
-    status.textContent = "Something went wrong. Please email sales@endwave.africa.";
+    status.textContent = `Something went wrong. Please email ${CONFIG.countries[data.country].email} or call +254 799 611 864.`;
     status.classList.add("is-error");
   } finally {
     btn.disabled = false;

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Endwave — Wholesale Internet Capacity for East Africa</title>
-  <meta name="description" content="Endwave NextGen Worldwide supplies dedicated, uncontended wholesale internet capacity (100 Mbps – 10 Gbps) to ISPs and network operators across Kenya, Uganda and Tanzania." />
+  <meta name="description" content="Endwave NextGen Worldwide supplies dedicated, uncontended wholesale internet capacity (100 Mbps – 100 Gbps) to ISPs and network operators across Kenya, Uganda and Tanzania." />
   <link rel="icon" type="image/png" href="assets/endwave-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,6 +22,7 @@
       <nav class="nav__links" id="navLinks">
         <a href="#model">How it works</a>
         <a href="#coverage">Coverage</a>
+        <a href="#datacentres">Data centres</a>
         <a href="#pricing">Pricing</a>
         <a href="#process">Process</a>
         <a href="#faq">FAQ</a>
@@ -46,12 +47,15 @@
 
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow reveal"><span class="eyebrow__num">00</span> Wholesale internet capacity</p>
+          <div class="hero__meta reveal">
+            <p class="eyebrow"><span class="eyebrow__num">00</span> Wholesale internet capacity</p>
+            <span class="asn-badge"><i></i>AS329846</span>
+          </div>
           <h1 class="hero__title reveal">
             Upstream capacity<br />for East Africa's<br /><span class="grad-text">networks.</span>
           </h1>
           <p class="hero__lead reveal">
-            Dedicated, uncontended bandwidth from <strong>100&nbsp;Mbps to 10&nbsp;Gbps</strong>, delivered on fibre to ISPs and network operators across Kenya, Uganda and Tanzania.
+            Dedicated, uncontended bandwidth from <strong>100&nbsp;Mbps to 100&nbsp;Gbps</strong>, delivered on fibre to ISPs and network operators across Kenya, Uganda and Tanzania.
           </p>
           <div class="hero__actions reveal">
             <a href="#request" class="btn btn--primary">Request capacity
@@ -61,7 +65,8 @@
           </div>
           <ul class="hero__stats reveal">
             <li><span class="stat__num" data-count="3">0</span><span class="stat__label">Countries</span></li>
-            <li><span class="stat__num" data-count="10" data-suffix=" Gbps">0</span><span class="stat__label">Max per link</span></li>
+            <li><span class="stat__num" data-count="100" data-suffix=" Gbps">0</span><span class="stat__label">Max per link</span></li>
+            <li><span class="stat__num" data-count="5">0</span><span class="stat__label">Data centres</span></li>
             <li><span class="stat__num" data-count="99.9" data-decimals="1" data-suffix="%">0</span><span class="stat__label">Target uptime</span></li>
           </ul>
         </div>
@@ -151,7 +156,7 @@
             </svg>
             <div class="art-card__legend">
               <span><i class="dot dot--cyan"></i>Live traffic</span>
-              <span class="mono">100 Mbps — 10 Gbps</span>
+              <span class="mono">AS329846 · 100 Mbps — 100 Gbps</span>
             </div>
           </div>
         </div>
@@ -257,7 +262,7 @@
               <svg viewBox="0 0 120 64"><rect x="10" y="40" width="16" height="16" rx="3" class="ill-bar" /><rect x="34" y="30" width="16" height="26" rx="3" class="ill-bar" /><rect x="58" y="20" width="16" height="36" rx="3" class="ill-bar" /><rect x="82" y="8" width="16" height="48" rx="3" class="ill-bar ill-bar--hi" /></svg>
             </div>
             <h3>Scales as you grow</h3>
-            <p>Start at 100 Mbps and upgrade the same link to 10 Gbps. The rate per Mbps steps down every band.</p>
+            <p>Start at 100 Mbps and upgrade the same link all the way to 100 Gbps. The rate per Mbps steps down every band.</p>
           </article>
           <article class="card reveal">
             <span class="card__num">04</span>
@@ -304,8 +309,9 @@
           <div class="country-panel reveal" id="countryPanel">
             <div class="country-panel__row"><span>Key cities</span><strong data-field="cities">Nairobi · Mombasa · Kisumu</strong></div>
             <div class="country-panel__row"><span>Billing currency</span><strong data-field="currency">KES or USD</strong></div>
+            <div class="country-panel__row"><span>Data centres</span><strong data-field="dcs">ADC Kenya · iColo NBO1 · iColo NBO2</strong></div>
             <div class="country-panel__row"><span>Delivery</span><strong data-field="delivery">Fibre hand-off at tower or PoP</strong></div>
-            <div class="country-panel__row"><span>Capacity</span><strong data-field="capacity">100 Mbps — 10 Gbps</strong></div>
+            <div class="country-panel__row"><span>Capacity</span><strong data-field="capacity">100 Mbps — 100 Gbps</strong></div>
           </div>
         </div>
 
@@ -373,18 +379,84 @@
               <g class="city" data-c="tz" transform="translate(166 291)"><circle r="4.5" /><text x="-10" y="16" text-anchor="end">Mwanza</text></g>
               <g class="city" data-c="tz" transform="translate(188 566)"><circle r="4.5" /><text x="10" y="4">Mbeya</text></g>
             </g>
+
+            <!-- Data centres -->
+            <g class="dcmarks">
+              <g transform="translate(306 262)"><rect x="-7" y="-7" width="14" height="14" rx="3" /><path d="M-3.5 -2h7M-3.5 2h7" /></g>
+              <g transform="translate(170 196)"><rect x="-7" y="-7" width="14" height="14" rx="3" /><path d="M-3.5 -2h7M-3.5 2h7" /></g>
+              <g transform="translate(437 498)"><rect x="-7" y="-7" width="14" height="14" rx="3" /><path d="M-3.5 -2h7M-3.5 2h7" /></g>
+            </g>
           </svg>
-          <p class="map-note mono">Illustrative network reach · not to scale</p>
+          <p class="map-note mono"><span class="map-key"><i></i>Data centre / colocation</span> Illustrative network reach · not to scale</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ DATA CENTRES ============ -->
+    <section class="section section--tint" id="datacentres">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="eyebrow__num">04</span> Data centres</p>
+            <h2 class="reveal">Present where your<br />network lives.</h2>
+          </div>
+          <div>
+            <p class="section__intro reveal">Endwave capacity is available inside five carrier-neutral data centres across the region. Take a hand-off in the building, cross-connect to your rack, or colocate your own equipment with us.</p>
+            <div class="dc-pills reveal">
+              <span class="dc-pill"><i></i>Colocation available</span>
+              <span class="dc-pill"><i></i>Regional coverage</span>
+              <span class="dc-pill"><i></i>AS329846</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dcs">
+          <article class="dc reveal">
+            <div class="dc__top"><span class="mono dc__code">UG · KLA</span><span class="dc__live"></span></div>
+            <svg class="dc__ill" viewBox="0 0 120 70" aria-hidden="true"><rect x="22" y="8" width="34" height="56" rx="4" /><rect x="64" y="8" width="34" height="56" rx="4" /><path d="M28 20h22M28 30h22M28 40h22M70 20h22M70 30h22M70 40h22" /><circle cx="46" cy="54" r="2" class="dc__led" /><circle cx="88" cy="54" r="2" class="dc__led dc__led--2" /></svg>
+            <h3>Raxio Uganda</h3>
+            <p>Kampala</p>
+            <ul class="dc__tags mono"><li>Colocation</li><li>Cross-connect</li></ul>
+          </article>
+          <article class="dc reveal">
+            <div class="dc__top"><span class="mono dc__code">KE · NBO</span><span class="dc__live"></span></div>
+            <svg class="dc__ill" viewBox="0 0 120 70" aria-hidden="true"><rect x="22" y="8" width="34" height="56" rx="4" /><rect x="64" y="8" width="34" height="56" rx="4" /><path d="M28 20h22M28 30h22M28 40h22M70 20h22M70 30h22M70 40h22" /><circle cx="46" cy="54" r="2" class="dc__led" /><circle cx="88" cy="54" r="2" class="dc__led dc__led--2" /></svg>
+            <h3>ADC Kenya</h3>
+            <p>Nairobi</p>
+            <ul class="dc__tags mono"><li>Colocation</li><li>Cross-connect</li></ul>
+          </article>
+          <article class="dc reveal">
+            <div class="dc__top"><span class="mono dc__code">KE · NBO1</span><span class="dc__live"></span></div>
+            <svg class="dc__ill" viewBox="0 0 120 70" aria-hidden="true"><rect x="22" y="8" width="34" height="56" rx="4" /><rect x="64" y="8" width="34" height="56" rx="4" /><path d="M28 20h22M28 30h22M28 40h22M70 20h22M70 30h22M70 40h22" /><circle cx="46" cy="54" r="2" class="dc__led" /><circle cx="88" cy="54" r="2" class="dc__led dc__led--2" /></svg>
+            <h3>iColo NBO1</h3>
+            <p>Nairobi</p>
+            <ul class="dc__tags mono"><li>Colocation</li><li>Cross-connect</li></ul>
+          </article>
+          <article class="dc reveal">
+            <div class="dc__top"><span class="mono dc__code">KE · NBO2</span><span class="dc__live"></span></div>
+            <svg class="dc__ill" viewBox="0 0 120 70" aria-hidden="true"><rect x="22" y="8" width="34" height="56" rx="4" /><rect x="64" y="8" width="34" height="56" rx="4" /><path d="M28 20h22M28 30h22M28 40h22M70 20h22M70 30h22M70 40h22" /><circle cx="46" cy="54" r="2" class="dc__led" /><circle cx="88" cy="54" r="2" class="dc__led dc__led--2" /></svg>
+            <h3>iColo NBO2</h3>
+            <p>Nairobi</p>
+            <ul class="dc__tags mono"><li>Colocation</li><li>Cross-connect</li></ul>
+          </article>
+          <article class="dc reveal">
+            <div class="dc__top"><span class="mono dc__code">TZ · DAR</span><span class="dc__live"></span></div>
+            <svg class="dc__ill" viewBox="0 0 120 70" aria-hidden="true"><rect x="22" y="8" width="34" height="56" rx="4" /><rect x="64" y="8" width="34" height="56" rx="4" /><path d="M28 20h22M28 30h22M28 40h22M70 20h22M70 30h22M70 40h22" /><circle cx="46" cy="54" r="2" class="dc__led" /><circle cx="88" cy="54" r="2" class="dc__led dc__led--2" /></svg>
+            <h3>Raxio Tanzania</h3>
+            <p>Dar es Salaam</p>
+            <ul class="dc__tags mono"><li>Colocation</li><li>Cross-connect</li></ul>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ============ PRICING ============ -->
-    <section class="section section--tint" id="pricing">
+    <section class="section" id="pricing">
       <div class="container">
         <div class="section__head">
           <div>
-            <p class="eyebrow reveal"><span class="eyebrow__num">04</span> Sizing &amp; rates</p>
+            <p class="eyebrow reveal"><span class="eyebrow__num">05</span> Sizing &amp; rates</p>
             <h2 class="reveal">How much do you need?</h2>
           </div>
           <p class="section__intro reveal">Set the size your network needs and the monthly figure follows. The bigger the link, the less each Mbps costs.</p>
@@ -415,7 +487,7 @@
             <div class="range">
               <input type="range" id="calcRange" min="0" max="1000" value="200" aria-label="Capacity" />
               <div class="range__ticks mono">
-                <span style="left:0%">50</span><span style="left:20%">150</span><span style="left:40%">300</span><span style="left:60%">600</span><span style="left:80%">1 Gbps</span><span style="left:100%">10 Gbps</span>
+                <span style="left:0%">50</span><span style="left:16.67%">150</span><span style="left:33.33%">300</span><span style="left:50%">600</span><span style="left:66.67%">1G</span><span style="left:83.33%">10G</span><span style="left:100%">100G</span>
               </div>
             </div>
 
@@ -440,11 +512,11 @@
     </section>
 
     <!-- ============ WHO WE SERVE ============ -->
-    <section class="section" id="customers">
+    <section class="section section--tint" id="customers">
       <div class="container">
         <div class="section__head">
           <div>
-            <p class="eyebrow reveal"><span class="eyebrow__num">05</span> Who we serve</p>
+            <p class="eyebrow reveal"><span class="eyebrow__num">06</span> Who we serve</p>
             <h2 class="reveal">For every network that<br />moves traffic onwards.</h2>
           </div>
         </div>
@@ -459,10 +531,10 @@
     </section>
 
     <!-- ============ PROCESS ============ -->
-    <section class="section section--tint" id="process">
+    <section class="section" id="process">
       <div class="container process">
         <div>
-          <p class="eyebrow reveal"><span class="eyebrow__num">06</span> Schedule of works</p>
+          <p class="eyebrow reveal"><span class="eyebrow__num">07</span> Schedule of works</p>
           <h2 class="reveal">From request<br />to live.</h2>
           <p class="section__intro reveal">Four clear steps, each tracked with you as it happens. You pay once setup is agreed — never before.</p>
         </div>
@@ -497,10 +569,10 @@
     </section>
 
     <!-- ============ FAQ ============ -->
-    <section class="section" id="faq">
+    <section class="section section--tint" id="faq">
       <div class="container faq">
         <div>
-          <p class="eyebrow reveal"><span class="eyebrow__num">07</span> Notes</p>
+          <p class="eyebrow reveal"><span class="eyebrow__num">08</span> Notes</p>
           <h2 class="reveal">Before you request.</h2>
         </div>
         <div class="accordion" id="accordion">
@@ -514,7 +586,7 @@
           </details>
           <details class="acc reveal">
             <summary><span class="mono">03</span>How is the capacity delivered?</summary>
-            <div class="acc__body"><p>On fibre, handed off at the tower site, PoP or data centre nearest your network. Your technician splices on site and we commission the link together.</p></div>
+            <div class="acc__body"><p>On fibre, handed off at the tower site, PoP or partner data centre nearest your network — Raxio Uganda, ADC Kenya, iColo NBO1 &amp; NBO2, or Raxio Tanzania. Your technician splices on site and we commission the link together.</p></div>
           </details>
           <details class="acc reveal">
             <summary><span class="mono">04</span>Which countries do you cover?</summary>
@@ -530,22 +602,29 @@
           </details>
           <details class="acc reveal">
             <summary><span class="mono">07</span>Do you offer IP addresses and BGP?</summary>
-            <div class="acc__body"><p>Yes. We support static IP allocations and BGP sessions for operators with their own ASN. Talk to our engineering team for details.</p></div>
+            <div class="acc__body"><p>Yes. Endwave runs its own network as <strong>AS329846</strong>. We support static IP allocations and BGP sessions for operators with their own ASN. Talk to our engineering team for details.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">08</span>Do you offer colocation?</summary>
+            <div class="acc__body"><p>Yes. Colocation is available at our partner data centres — Raxio Uganda, ADC Kenya, iColo NBO1 and NBO2 in Kenya, and Raxio Tanzania — with capacity delivered straight to your rack.</p></div>
           </details>
         </div>
       </div>
     </section>
 
     <!-- ============ REQUEST FORM ============ -->
-    <section class="section section--tint" id="request">
+    <section class="section" id="request">
       <div class="container form-wrap">
         <div class="form-wrap__copy">
-          <p class="eyebrow reveal"><span class="eyebrow__num">08</span> Request</p>
+          <p class="eyebrow reveal"><span class="eyebrow__num">09</span> Request</p>
           <h2 class="reveal">Request capacity.</h2>
           <p class="section__intro reveal">We confirm feasibility at your site, then send a quotation at your band's rate. Nothing is due to send this request.</p>
           <ul class="contact-list reveal">
-            <li><span class="mono">Email</span><a href="mailto:sales@endwave.africa">sales@endwave.africa</a></li>
-            <li><span class="mono">Phone</span><a href="tel:+254700000000">+254 700 000 000</a></li>
+            <li><span class="mono">Kenya</span><a href="mailto:kenya@endwaveafrica.com">kenya@endwaveafrica.com</a></li>
+            <li><span class="mono">Uganda</span><a href="mailto:uganda@endwaveafrica.com">uganda@endwaveafrica.com</a></li>
+            <li><span class="mono">Tanzania</span><a href="mailto:tz@endwaveafrica.com">tz@endwaveafrica.com</a></li>
+            <li><span class="mono">Phone</span><a href="tel:+254799611864">+254 799 611 864</a></li>
+            <li><span class="mono">Network</span><span>AS329846</span></li>
             <li><span class="mono">Hours</span><span>NOC 24/7 · Sales Mon–Fri, 8am–6pm EAT</span></li>
           </ul>
         </div>
@@ -631,7 +710,7 @@
         </div>
         <div class="cta__actions">
           <a href="#request" class="btn btn--light">Request capacity</a>
-          <a href="mailto:sales@endwave.africa?subject=Call%20request" class="btn btn--outline-light">Book a call</a>
+          <a href="tel:+254799611864" class="btn btn--outline-light">Book a call</a>
         </div>
       </div>
     </section>
@@ -648,6 +727,7 @@
         <h4>Company</h4>
         <a href="#model">How it works</a>
         <a href="#coverage">Coverage</a>
+        <a href="#datacentres">Data centres</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -657,15 +737,16 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <a href="mailto:sales@endwave.africa">sales@endwave.africa</a>
-        <a href="tel:+254700000000">+254 700 000 000</a>
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+        <a href="mailto:kenya@endwaveafrica.com">kenya@endwaveafrica.com</a>
+        <a href="mailto:uganda@endwaveafrica.com">uganda@endwaveafrica.com</a>
+        <a href="mailto:tz@endwaveafrica.com">tz@endwaveafrica.com</a>
+        <a href="tel:+254799611864">+254 799 611 864</a>
+        <a href="https://wa.me/254799611864" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="container footer__bottom">
       <span>© <span id="year"></span> Endwave NextGen Worldwide. All rights reserved.</span>
-      <span class="mono">Kenya · Uganda · Tanzania</span>
+      <span class="mono">AS329846 · Kenya · Uganda · Tanzania</span>
     </div>
   </footer>
 
