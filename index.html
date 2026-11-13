@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endwave — Wholesale Internet Capacity for East Africa</title>
+  <meta name="description" content="Endwave NextGen Worldwide supplies dedicated, uncontended wholesale internet capacity (100 Mbps – 10 Gbps) to ISPs and network operators across Kenya, Uganda and Tanzania." />
+  <link rel="icon" type="image/png" href="assets/endwave-mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo" aria-label="Endwave home">
+        <img src="assets/endwave-logo.png" alt="Endwave NextGen Worldwide" />
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#model">How it works</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#request" class="btn btn--primary btn--sm nav__cta-mobile">Request capacity</a>
+      </nav>
+      <a href="#request" class="btn btn--primary btn--sm nav__cta">Request capacity</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <svg class="hero__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+        <path class="wave wave--1" d="M0,160 C240,80 480,240 720,160 C960,80 1200,240 1440,160 L1440,320 L0,320 Z" />
+        <path class="wave wave--2" d="M0,200 C240,120 480,280 720,200 C960,120 1200,280 1440,200 L1440,320 L0,320 Z" />
+        <path class="wave wave--3" d="M0,240 C240,170 480,310 720,240 C960,170 1200,310 1440,240 L1440,320 L0,320 Z" />
+      </svg>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__num">00</span> Wholesale internet capacity</p>
+          <h1 class="hero__title reveal">
+            Upstream capacity<br />for East Africa's<br /><span class="grad-text">networks.</span>
+          </h1>
+          <p class="hero__lead reveal">
+            Dedicated, uncontended bandwidth from <strong>100&nbsp;Mbps to 10&nbsp;Gbps</strong>, delivered on fibre to ISPs and network operators across Kenya, Uganda and Tanzania.
+          </p>
+          <div class="hero__actions reveal">
+            <a href="#request" class="btn btn--primary">Request capacity
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#model" class="btn btn--ghost">See how it works</a>
+          </div>
+          <ul class="hero__stats reveal">
+            <li><span class="stat__num" data-count="3">0</span><span class="stat__label">Countries</span></li>
+            <li><span class="stat__num" data-count="10" data-suffix=" Gbps">0</span><span class="stat__label">Max per link</span></li>
+            <li><span class="stat__num" data-count="99.9" data-decimals="1" data-suffix="%">0</span><span class="stat__label">Target uptime</span></li>
+          </ul>
+        </div>
+
+        <!-- Hero illustration: global internet → Endwave core → three countries -->
+        <div class="hero__art reveal" aria-hidden="true">
+          <div class="art-card">
+            <span class="art-card__corner tl"></span><span class="art-card__corner br"></span>
+            <svg viewBox="0 0 520 460" class="hero-svg">
+              <defs>
+                <linearGradient id="gLink" x1="0" x2="1">
+                  <stop offset="0" stop-color="#15AFE2" />
+                  <stop offset="1" stop-color="#2A80C2" />
+                </linearGradient>
+                <radialGradient id="gGlow">
+                  <stop offset="0" stop-color="#15AFE2" stop-opacity=".35" />
+                  <stop offset="1" stop-color="#15AFE2" stop-opacity="0" />
+                </radialGradient>
+                <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1.2" fill="#1B2853" opacity=".09" />
+                </pattern>
+              </defs>
+              <rect width="520" height="460" fill="url(#dots)" />
+
+              <!-- Globe -->
+              <g class="globe" transform="translate(78 230)">
+                <circle r="46" fill="#fff" stroke="#1B2853" stroke-width="1.6" />
+                <ellipse rx="20" ry="46" fill="none" stroke="#1B2853" stroke-width="1.2" opacity=".6" />
+                <ellipse class="globe__spin" rx="36" ry="46" fill="none" stroke="#2A80C2" stroke-width="1.2" />
+                <line x1="-46" x2="46" y1="0" y2="0" stroke="#1B2853" stroke-width="1.2" opacity=".6" />
+                <path d="M-42,-18 H42 M-42,18 H42" stroke="#1B2853" stroke-width="1" opacity=".35" />
+                <text y="72" text-anchor="middle" class="svg-label">GLOBAL INTERNET</text>
+              </g>
+
+              <!-- upstream links -->
+              <path id="up1" class="link" d="M124 214 C 180 190, 200 200, 236 214" />
+              <path id="up2" class="link" d="M124 246 C 180 270, 200 260, 236 246" />
+              <path class="link link--flow" d="M124 214 C 180 190, 200 200, 236 214" />
+              <path class="link link--flow link--delay" d="M124 246 C 180 270, 200 260, 236 246" />
+
+              <!-- Endwave core -->
+              <g transform="translate(270 230)">
+                <circle r="70" fill="url(#gGlow)" class="pulse" />
+                <rect x="-34" y="-44" width="68" height="88" rx="10" fill="#1B2853" />
+                <rect x="-24" y="-32" width="48" height="12" rx="3" fill="#2A80C2" />
+                <rect x="-24" y="-14" width="48" height="12" rx="3" fill="#2A80C2" opacity=".8" />
+                <rect x="-24" y="4" width="48" height="12" rx="3" fill="#15AFE2" />
+                <circle class="led" cx="16" cy="-26" r="2.2" fill="#7CF0C5" />
+                <circle class="led led--2" cx="16" cy="-8" r="2.2" fill="#7CF0C5" />
+                <circle class="led led--3" cx="16" cy="10" r="2.2" fill="#7CF0C5" />
+                <path d="M-20 30 c 8 -6 14 6 22 0 s 14 -6 18 0" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                <text y="66" text-anchor="middle" class="svg-label svg-label--strong">ENDWAVE CORE</text>
+              </g>
+
+              <!-- downstream links -->
+              <path class="link" d="M304 214 C 360 170, 380 110, 420 104" />
+              <path class="link" d="M304 230 C 360 230, 380 230, 420 230" />
+              <path class="link" d="M304 246 C 360 290, 380 350, 420 356" />
+              <path class="link link--flow" d="M304 214 C 360 170, 380 110, 420 104" />
+              <path class="link link--flow link--delay" d="M304 230 C 360 230, 380 230, 420 230" />
+              <path class="link link--flow link--delay2" d="M304 246 C 360 290, 380 350, 420 356" />
+
+              <!-- Country nodes -->
+              <g class="node" transform="translate(448 104)">
+                <circle r="26" fill="#fff" stroke="#2A80C2" stroke-width="1.6" />
+                <text y="5" text-anchor="middle" class="svg-code">KE</text>
+                <text y="46" text-anchor="middle" class="svg-label">KENYA</text>
+              </g>
+              <g class="node" transform="translate(448 230)">
+                <circle r="26" fill="#fff" stroke="#2A80C2" stroke-width="1.6" />
+                <text y="5" text-anchor="middle" class="svg-code">UG</text>
+                <text y="46" text-anchor="middle" class="svg-label">UGANDA</text>
+              </g>
+              <g class="node" transform="translate(448 356)">
+                <circle r="26" fill="#fff" stroke="#2A80C2" stroke-width="1.6" />
+                <text y="5" text-anchor="middle" class="svg-code">TZ</text>
+                <text y="46" text-anchor="middle" class="svg-label">TANZANIA</text>
+              </g>
+
+              <!-- tower -->
+              <g transform="translate(200 360)" class="tower">
+                <path d="M0 0 L-14 70 M0 0 L14 70 M-10 50 L10 50 M-7 32 L7 32 M-4 16 L4 16 M-10 50 L7 32 M10 50 L-7 32" stroke="#1B2853" stroke-width="1.4" fill="none" />
+                <circle cy="-4" r="3" fill="#15AFE2" />
+                <path class="signal" d="M-10 -12 a14 14 0 0 1 20 0" stroke="#15AFE2" stroke-width="1.6" fill="none" />
+                <path class="signal signal--2" d="M-16 -18 a22 22 0 0 1 32 0" stroke="#15AFE2" stroke-width="1.6" fill="none" />
+              </g>
+            </svg>
+            <div class="art-card__legend">
+              <span><i class="dot dot--cyan"></i>Live traffic</span>
+              <span class="mono">100 Mbps — 10 Gbps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-label="Who we supply">
+      <div class="marquee__track">
+        <span>Independent ISPs</span><i></i><span>WISPs</span><i></i><span>Fibre operators</span><i></i><span>Regional carriers</span><i></i><span>ICT &amp; network integrators</span><i></i><span>Government &amp; education networks</span><i></i><span>Enterprises &amp; campuses</span><i></i>
+        <span>Independent ISPs</span><i></i><span>WISPs</span><i></i><span>Fibre operators</span><i></i><span>Regional carriers</span><i></i><span>ICT &amp; network integrators</span><i></i><span>Government &amp; education networks</span><i></i><span>Enterprises &amp; campuses</span><i></i>
+      </div>
+    </div>
+
+    <!-- ============ SUPPLY MODEL ============ -->
+    <section class="section" id="model">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="eyebrow__num">01</span> Supply model</p>
+            <h2 class="reveal">Capacity, not a bundle.</h2>
+          </div>
+          <p class="section__intro reveal">We buy high-capacity transit from international carriers over multiple routes, manage it as one resilient network, and hand dedicated bandwidth to the operators who serve homes, businesses and communities.</p>
+        </div>
+
+        <ol class="flow">
+          <li class="flow__step reveal">
+            <div class="flow__icon">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17" /><ellipse cx="24" cy="24" rx="7" ry="17" /><path d="M7 24h34M9 16h30M9 32h30" /></svg>
+            </div>
+            <span class="flow__num">A</span>
+            <h3>Upstream providers</h3>
+            <p>International carriers, global networks, IXPs and regional fibre — multiple routes for redundancy.</p>
+          </li>
+          <li class="flow__step flow__step--core reveal">
+            <div class="flow__icon">
+              <img src="assets/endwave-mark.png" alt="" />
+            </div>
+            <span class="flow__num">B</span>
+            <h3>Endwave</h3>
+            <p>Network access and bandwidth management. Redundant links, low latency, flexible contracts.</p>
+          </li>
+          <li class="flow__step reveal">
+            <div class="flow__icon">
+              <svg viewBox="0 0 48 48"><path d="M24 20v22M18 42h12M24 20l-7 22M24 20l7 22" /><circle cx="24" cy="16" r="3" /><path d="M16 9a12 12 0 0 1 16 0M12 5a18 18 0 0 1 24 0" /></svg>
+            </div>
+            <span class="flow__num">C</span>
+            <h3>Wholesale customers</h3>
+            <p>ISPs, WISPs, fibre operators and carriers buy in bulk to resell or run their own networks.</p>
+          </li>
+          <li class="flow__step reveal">
+            <div class="flow__icon">
+              <svg viewBox="0 0 48 48"><rect x="5" y="18" width="12" height="22" /><path d="M8 24h6M8 30h6" /><path d="M31 30l8-8 8 8M33 28v12h12V28" transform="translate(-6 0)" /><path d="M17 34h8" stroke-dasharray="2 3" /></svg>
+            </div>
+            <span class="flow__num">D</span>
+            <h3>Last-mile distribution</h3>
+            <p>Fibre, fixed wireless, 4G/5G and Wi-Fi across urban and rural coverage areas.</p>
+          </li>
+          <li class="flow__step reveal">
+            <div class="flow__icon">
+              <svg viewBox="0 0 48 48"><circle cx="17" cy="16" r="6" /><circle cx="33" cy="18" r="5" /><path d="M6 40c0-7 5-12 11-12s11 5 11 12M26 40c1-6 4-10 7-10 4 0 9 4 9 10" /></svg>
+            </div>
+            <span class="flow__num">E</span>
+            <h3>End users</h3>
+            <p>Businesses, schools, homes, hospitals, factories and rural communities — better connected.</p>
+          </li>
+        </ol>
+        <div class="flow__rail" aria-hidden="true"><span class="flow__pulse"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ ADVANTAGE ============ -->
+    <section class="section section--tint" id="advantage">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="eyebrow__num">02</span> The Endwave advantage</p>
+            <h2 class="reveal">Built for operators carrying their subscribers' traffic.</h2>
+          </div>
+          <p class="section__intro reveal">Not a household package. Predictable capacity that behaves the same at 9 pm on a Friday as it does at 9 am on a Monday.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card__num">01</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><rect x="4" y="22" width="112" height="20" rx="10" class="ill-track" /><rect x="4" y="22" width="112" height="20" rx="10" class="ill-fill ill-fill--full" /></svg>
+            </div>
+            <h3>Dedicated, not shared</h3>
+            <p>The capacity you buy is yours — uncontended, never throttled when other networks get busy.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">02</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><path d="M10 32 C 40 4, 80 4, 110 32" class="ill-line" /><path d="M10 32 C 40 60, 80 60, 110 32" class="ill-line ill-line--alt" /><circle cx="10" cy="32" r="5" class="ill-node" /><circle cx="110" cy="32" r="5" class="ill-node" /></svg>
+            </div>
+            <h3>Redundant routes</h3>
+            <p>Multiple upstream paths so a single fibre cut or carrier fault doesn't take your network down.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">03</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><rect x="10" y="40" width="16" height="16" rx="3" class="ill-bar" /><rect x="34" y="30" width="16" height="26" rx="3" class="ill-bar" /><rect x="58" y="20" width="16" height="36" rx="3" class="ill-bar" /><rect x="82" y="8" width="16" height="48" rx="3" class="ill-bar ill-bar--hi" /></svg>
+            </div>
+            <h3>Scales as you grow</h3>
+            <p>Start at 100 Mbps and upgrade the same link to 10 Gbps. The rate per Mbps steps down every band.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">04</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><circle cx="60" cy="32" r="22" class="ill-line" /><path d="M60 18v14l10 6" class="ill-line" /><circle cx="60" cy="32" r="28" class="ill-ring" /></svg>
+            </div>
+            <h3>Low latency, monitored 24/7</h3>
+            <p>Our NOC watches every link around the clock, with proactive alerts before your customers notice.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">05</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><rect x="30" y="10" width="60" height="44" rx="6" class="ill-line" /><path d="M42 26h36M42 36h24" class="ill-line" /><path d="M72 44l6 6 12-14" class="ill-check" /></svg>
+            </div>
+            <h3>Flexible contracts</h3>
+            <p>Monthly or term commitments, clear SLAs and commercial terms that work for growing operators.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">06</span>
+            <div class="card__ill">
+              <svg viewBox="0 0 120 64"><circle cx="40" cy="26" r="10" class="ill-line" /><circle cx="80" cy="26" r="10" class="ill-line" /><path d="M22 56c0-10 8-16 18-16s18 6 18 16M62 56c0-10 8-16 18-16s18 6 18 16" class="ill-line" /><path d="M50 26h20" class="ill-dash" /></svg>
+            </div>
+            <h3>Engineers on your side</h3>
+            <p>Our team handles feasibility, site access and commissioning alongside your technicians.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COVERAGE ============ -->
+    <section class="section" id="coverage">
+      <div class="container coverage">
+        <div class="coverage__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__num">03</span> Coverage</p>
+          <h2 class="reveal">One network.<br />Three markets.</h2>
+          <p class="section__intro reveal">Capacity lands at the coast, crosses the borders and reaches tower and fibre sites near your network — so you can serve customers in Kenya, Uganda and Tanzania from a single supplier.</p>
+
+          <div class="tabs reveal" role="tablist">
+            <button class="tab is-active" role="tab" data-country="ke" aria-selected="true">Kenya</button>
+            <button class="tab" role="tab" data-country="ug" aria-selected="false">Uganda</button>
+            <button class="tab" role="tab" data-country="tz" aria-selected="false">Tanzania</button>
+          </div>
+
+          <div class="country-panel reveal" id="countryPanel">
+            <div class="country-panel__row"><span>Key cities</span><strong data-field="cities">Nairobi · Mombasa · Kisumu</strong></div>
+            <div class="country-panel__row"><span>Billing currency</span><strong data-field="currency">KES or USD</strong></div>
+            <div class="country-panel__row"><span>Delivery</span><strong data-field="delivery">Fibre hand-off at tower or PoP</strong></div>
+            <div class="country-panel__row"><span>Capacity</span><strong data-field="capacity">100 Mbps — 10 Gbps</strong></div>
+          </div>
+        </div>
+
+        <div class="coverage__map reveal" aria-hidden="true">
+          <svg viewBox="0 0 520 660" id="map">
+            <defs>
+              <pattern id="mapDots" width="12" height="12" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.3" fill="#1B2853" opacity=".12" />
+              </pattern>
+              <linearGradient id="ocean" x1="0" x2="1">
+                <stop offset="0" stop-color="#15AFE2" stop-opacity=".08" />
+                <stop offset="1" stop-color="#15AFE2" stop-opacity=".22" />
+              </linearGradient>
+            </defs>
+            <rect width="520" height="660" fill="url(#mapDots)" />
+            <!-- Indian Ocean -->
+            <path d="M514 0 L520 0 L520 660 L470 660 L458 622 L430 566 L430 530 L421 482 L414 413 L436 352 L454 318 L486 281 L514 254 Z" fill="url(#ocean)" />
+            <path d="M514 254 L486 281 L454 318 L436 352 L414 413 L421 482 L430 530 L430 566 L458 622 L470 660" fill="none" stroke="#15AFE2" stroke-width="1.4" stroke-dasharray="3 4" opacity=".7" />
+            <text x="490" y="520" class="svg-label svg-label--ocean" transform="rotate(-90 490 520)">INDIAN OCEAN</text>
+            <!-- Lake Victoria -->
+            <path d="M120 176 C 150 162, 200 166, 240 180 C 252 205, 248 240, 236 262 C 232 290, 214 312, 186 308 C 160 304, 130 300, 118 270 C 108 240, 112 200, 120 176 Z" fill="#15AFE2" fill-opacity=".14" stroke="#15AFE2" stroke-opacity=".5" />
+            <text x="178" y="242" text-anchor="middle" class="svg-label svg-label--lake">LAKE VICTORIA</text>
+
+            <!-- Country labels -->
+            <text x="118" y="120" class="map-country" data-c="ug">UGANDA</text>
+            <text x="330" y="150" class="map-country" data-c="ke">KENYA</text>
+            <text x="220" y="410" class="map-country" data-c="tz">TANZANIA</text>
+
+            <!-- Subsea cables -->
+            <path class="map-sub" d="M520 300 C 490 320, 460 340, 436 352" />
+            <path class="map-sub" d="M520 470 C 480 478, 450 480, 421 482" />
+            <path class="map-sub map-sub--flow" d="M520 300 C 490 320, 460 340, 436 352" />
+            <path class="map-sub map-sub--flow" d="M520 470 C 480 478, 450 480, 421 482" />
+
+            <!-- Terrestrial routes -->
+            <g class="routes">
+              <path data-c="ke" d="M436 352 L323 242" />
+              <path data-c="ke" d="M323 242 L240 194" />
+              <path data-c="ug" d="M240 194 L153 176" />
+              <path data-c="ug" d="M153 176 L142 79" />
+              <path data-c="ug" d="M153 176 L76 214" />
+              <path data-c="tz" d="M323 242 L317 326" />
+              <path data-c="tz" d="M317 326 L280 457" />
+              <path data-c="tz" d="M421 482 L280 457" />
+              <path data-c="tz" d="M280 457 L188 566" />
+              <path data-c="tz" d="M166 291 L280 457" />
+              <path data-c="tz" d="M436 352 L414 413 L421 482" />
+            </g>
+            <g class="routes routes--flow">
+              <path d="M436 352 L323 242 L240 194 L153 176" />
+              <path d="M421 482 L280 457 L317 326 L323 242" />
+            </g>
+
+            <!-- Cities -->
+            <g class="cities">
+              <g class="city city--hub" data-c="ke" transform="translate(323 242)"><circle r="14" class="city__halo" /><circle r="6" /><text x="12" y="-10">Nairobi</text></g>
+              <g class="city city--hub" data-c="ke" transform="translate(436 352)"><circle r="14" class="city__halo" /><circle r="6" /><text x="-16" y="18" text-anchor="end">Mombasa</text></g>
+              <g class="city" data-c="ke" transform="translate(240 194)"><circle r="4.5" /><text x="10" y="-6">Kisumu</text></g>
+              <g class="city city--hub" data-c="ug" transform="translate(153 176)"><circle r="14" class="city__halo" /><circle r="6" /><text x="-12" y="-12" text-anchor="end">Kampala</text></g>
+              <g class="city" data-c="ug" transform="translate(142 79)"><circle r="4.5" /><text x="10" y="4">Gulu</text></g>
+              <g class="city" data-c="ug" transform="translate(76 214)"><circle r="4.5" /><text x="-8" y="18" text-anchor="middle">Mbarara</text></g>
+              <g class="city city--hub" data-c="tz" transform="translate(421 482)"><circle r="14" class="city__halo" /><circle r="6" /><text x="-14" y="22" text-anchor="end">Dar es Salaam</text></g>
+              <g class="city" data-c="tz" transform="translate(317 326)"><circle r="4.5" /><text x="-10" y="4" text-anchor="end">Arusha</text></g>
+              <g class="city" data-c="tz" transform="translate(280 457)"><circle r="4.5" /><text x="-10" y="-8" text-anchor="end">Dodoma</text></g>
+              <g class="city" data-c="tz" transform="translate(166 291)"><circle r="4.5" /><text x="-10" y="16" text-anchor="end">Mwanza</text></g>
+              <g class="city" data-c="tz" transform="translate(188 566)"><circle r="4.5" /><text x="10" y="4">Mbeya</text></g>
+            </g>
+          </svg>
+          <p class="map-note mono">Illustrative network reach · not to scale</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section section--tint" id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="eyebrow__num">04</span> Sizing &amp; rates</p>
+            <h2 class="reveal">How much do you need?</h2>
+          </div>
+          <p class="section__intro reveal">Set the size your network needs and the monthly figure follows. The bigger the link, the less each Mbps costs.</p>
+        </div>
+
+        <div class="calc reveal">
+          <div class="calc__main">
+            <div class="calc__top">
+              <div>
+                <label class="field-label" for="calcCountry">Country</label>
+                <div class="seg" id="calcCountry">
+                  <button class="seg__btn is-active" data-country="ke">🇰🇪 Kenya</button>
+                  <button class="seg__btn" data-country="ug">🇺🇬 Uganda</button>
+                  <button class="seg__btn" data-country="tz">🇹🇿 Tanzania</button>
+                </div>
+              </div>
+              <div>
+                <span class="field-label">Requested capacity</span>
+                <div class="stepper">
+                  <output class="stepper__val" id="calcVal">100</output>
+                  <span class="stepper__unit" id="calcUnit">Mbps</span>
+                  <button class="stepper__btn" data-step="-1" aria-label="Decrease">−</button>
+                  <button class="stepper__btn" data-step="1" aria-label="Increase">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="range">
+              <input type="range" id="calcRange" min="0" max="1000" value="200" aria-label="Capacity" />
+              <div class="range__ticks mono">
+                <span style="left:0%">50</span><span style="left:20%">150</span><span style="left:40%">300</span><span style="left:60%">600</span><span style="left:80%">1 Gbps</span><span style="left:100%">10 Gbps</span>
+              </div>
+            </div>
+
+            <div class="calc__result">
+              <div>
+                <span class="mono calc__cur" id="calcCur">KES</span>
+                <span class="calc__price" id="calcPrice">0</span>
+                <span class="calc__per">/ month</span>
+              </div>
+              <p class="calc__meta"><span id="calcRate">—</span> per Mbps · <span id="calcTier">—</span> band · indicative until feasibility is confirmed.</p>
+            </div>
+          </div>
+
+          <div class="calc__side">
+            <p>One-off setup (fibre, SFPs and accessories to site) is quoted after feasibility. Nothing is due to send a request.</p>
+            <a href="#request" class="btn btn--primary" id="calcCta">Request this capacity</a>
+          </div>
+        </div>
+
+        <div class="tiers reveal" id="tiers"></div>
+      </div>
+    </section>
+
+    <!-- ============ WHO WE SERVE ============ -->
+    <section class="section" id="customers">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="eyebrow__num">05</span> Who we serve</p>
+            <h2 class="reveal">For every network that<br />moves traffic onwards.</h2>
+          </div>
+        </div>
+        <div class="serve">
+          <div class="serve__item reveal"><span class="serve__n">01</span><h3>Independent ISPs &amp; WISPs</h3><p>Grow subscriber numbers without upstream bottlenecks.</p></div>
+          <div class="serve__item reveal"><span class="serve__n">02</span><h3>Fibre network operators</h3><p>Back-haul and transit for metro and long-haul builds.</p></div>
+          <div class="serve__item reveal"><span class="serve__n">03</span><h3>ICT &amp; solutions companies</h3><p>Dependable capacity for managed services and data centres.</p></div>
+          <div class="serve__item reveal"><span class="serve__n">04</span><h3>Government &amp; education</h3><p>Connectivity for public institutions, universities and schools.</p></div>
+          <div class="serve__item reveal"><span class="serve__n">05</span><h3>Corporates &amp; enterprises</h3><p>Banks, factories, hotels and hospitals that can't afford downtime.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section section--tint" id="process">
+      <div class="container process">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow__num">06</span> Schedule of works</p>
+          <h2 class="reveal">From request<br />to live.</h2>
+          <p class="section__intro reveal">Four clear steps, each tracked with you as it happens. You pay once setup is agreed — never before.</p>
+        </div>
+        <ol class="timeline">
+          <li class="timeline__step reveal">
+            <span class="timeline__dot"></span>
+            <span class="mono timeline__n">01</span>
+            <h3>Request capacity</h3>
+            <p>Tell us how much bandwidth you need and where your network is.</p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot"></span>
+            <span class="mono timeline__n">02</span>
+            <h3>Feasibility check</h3>
+            <p>We confirm route, site and capacity, then send your quotation.</p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot"></span>
+            <span class="mono timeline__n">03</span>
+            <h3>Agreement &amp; setup</h3>
+            <p>Sign the service agreement and settle the one-off setup cost.</p>
+            <span class="pill">Payment</span>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot"></span>
+            <span class="mono timeline__n">04</span>
+            <h3>Go live</h3>
+            <p>Fibre is spliced on site, we commission the link and your traffic moves onto dedicated capacity.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow__num">07</span> Notes</p>
+          <h2 class="reveal">Before you request.</h2>
+        </div>
+        <div class="accordion" id="accordion">
+          <details class="acc reveal" open>
+            <summary><span class="mono">01</span>Who is wholesale capacity for?</summary>
+            <div class="acc__body"><p>Internet service providers and network operators who carry their own subscribers' traffic and need upstream capacity that behaves predictably — not a household broadband package.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">02</span>Is the capacity shared or throttled?</summary>
+            <div class="acc__body"><p>No. Capacity is dedicated to you and uncontended. You get the full committed rate at all hours.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">03</span>How is the capacity delivered?</summary>
+            <div class="acc__body"><p>On fibre, handed off at the tower site, PoP or data centre nearest your network. Your technician splices on site and we commission the link together.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">04</span>Which countries do you cover?</summary>
+            <div class="acc__body"><p>Kenya, Uganda and Tanzania. Share your location or site number and we'll confirm the nearest point we can serve you from.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">05</span>How is capacity priced?</summary>
+            <div class="acc__body"><p>Per Mbps per month, in bands. The rate steps down as your link gets bigger. Billing is available in local currency or USD.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">06</span>Can I add capacity later?</summary>
+            <div class="acc__body"><p>Yes. Upgrade the same link as your subscribers grow — your new band's rate applies from the next billing cycle.</p></div>
+          </details>
+          <details class="acc reveal">
+            <summary><span class="mono">07</span>Do you offer IP addresses and BGP?</summary>
+            <div class="acc__body"><p>Yes. We support static IP allocations and BGP sessions for operators with their own ASN. Talk to our engineering team for details.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REQUEST FORM ============ -->
+    <section class="section section--tint" id="request">
+      <div class="container form-wrap">
+        <div class="form-wrap__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__num">08</span> Request</p>
+          <h2 class="reveal">Request capacity.</h2>
+          <p class="section__intro reveal">We confirm feasibility at your site, then send a quotation at your band's rate. Nothing is due to send this request.</p>
+          <ul class="contact-list reveal">
+            <li><span class="mono">Email</span><a href="mailto:sales@endwave.africa">sales@endwave.africa</a></li>
+            <li><span class="mono">Phone</span><a href="tel:+254700000000">+254 700 000 000</a></li>
+            <li><span class="mono">Hours</span><span>NOC 24/7 · Sales Mon–Fri, 8am–6pm EAT</span></li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="requestForm" novalidate>
+          <fieldset>
+            <legend><i></i>What you need</legend>
+            <div class="grid-2">
+              <div class="field">
+                <label for="fCapacity">Capacity (Mbps) <b>*</b></label>
+                <input id="fCapacity" name="capacity" type="number" min="50" step="10" value="100" required />
+              </div>
+              <div class="field">
+                <label for="fCountry">Country <b>*</b></label>
+                <select id="fCountry" name="country" required>
+                  <option value="ke">Kenya</option>
+                  <option value="ug">Uganda</option>
+                  <option value="tz">Tanzania</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><i></i>Where it goes</legend>
+            <div class="field">
+              <label for="fSite">Site location, tower or site number <b>*</b></label>
+              <input id="fSite" name="site" type="text" placeholder="e.g. Ruiru, behind the Shell station · or site no. KE-0421" required />
+            </div>
+            <div class="field">
+              <label for="fNotes">Anything else? (optional)</label>
+              <textarea id="fNotes" name="notes" rows="3" placeholder="Current upstream, number of subscribers, timelines…"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><i></i>Who you are</legend>
+            <div class="grid-2">
+              <div class="field">
+                <label for="fName">Your name <b>*</b></label>
+                <input id="fName" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="fCompany">Company</label>
+                <input id="fCompany" name="company" type="text" autocomplete="organization" />
+              </div>
+              <div class="field">
+                <label for="fEmail">Email <b>*</b></label>
+                <input id="fEmail" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="fPhone">Mobile number <b>*</b></label>
+                <input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder="+254 712 345 678" required />
+              </div>
+            </div>
+          </fieldset>
+
+          <p class="form__status" id="formStatus" aria-live="polite"></p>
+          <button type="submit" class="btn btn--primary btn--block">Send request</button>
+
+          <div class="form__success" id="formSuccess" hidden>
+            <svg viewBox="0 0 64 64" class="success-ill"><circle cx="32" cy="32" r="28" /><path d="M20 33l8 8 16-18" /></svg>
+            <h3>Request received.</h3>
+            <p>Our team will confirm feasibility and send a quotation within one business day.</p>
+            <button type="button" class="btn btn--ghost" id="formReset">Send another request</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+      <div class="container cta__inner reveal">
+        <svg class="cta__waves" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,80 C150,20 300,140 450,80 S600,40 600,40" />
+          <path d="M0,110 C150,50 300,170 450,110 S600,70 600,70" />
+          <path d="M0,140 C150,80 300,200 450,140 S600,100 600,100" />
+        </svg>
+        <div>
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__num">→</span> Next</p>
+          <h2>Your next upstream<br />starts here.</h2>
+          <p>Tell us where your network is and how much capacity it needs.</p>
+        </div>
+        <div class="cta__actions">
+          <a href="#request" class="btn btn--light">Request capacity</a>
+          <a href="mailto:sales@endwave.africa?subject=Call%20request" class="btn btn--outline-light">Book a call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/endwave-logo.png" alt="Endwave NextGen Worldwide" class="footer__logo" />
+        <p>Wholesale internet capacity for a connected East Africa.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#model">How it works</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Markets</h4>
+        <span>Kenya</span><span>Uganda</span><span>Tanzania</span>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:sales@endwave.africa">sales@endwave.africa</a>
+        <a href="tel:+254700000000">+254 700 000 000</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Endwave NextGen Worldwide. All rights reserved.</span>
+      <span class="mono">Kenya · Uganda · Tanzania</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
