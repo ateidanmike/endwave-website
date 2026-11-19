@@ -14,10 +14,8 @@ Built with plain HTML, CSS and JavaScript. No build step required.
 ## Structure
 
 ```
-index.html      Page markup
-styles.css      Styles and animations
-script.js       Interactions
-assets/         Logos and brand mark
+index.html      Self-contained page (markup, styles, scripts, embedded logos)
+assets/         Logo and brand mark source files
 ```
 
 ## Run locally
