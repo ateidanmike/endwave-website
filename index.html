@@ -158,6 +158,8 @@ h3{font-size:clamp(26px,3vw,34px);letter-spacing:-.03em}
 .cov h2{margin:18px 0 22px}
 .tabs{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:12px;background:#fff;margin:30px 0 26px}
 .tabs button{border:0;background:none;padding:9px 18px;border-radius:9px;font-size:14px;font-weight:500;color:#5B6683;cursor:pointer;transition:.2s}
+.tabs button:has(.flag){display:inline-flex;align-items:center;gap:8px}
+.tabs button .flag{width:20px;height:14px;border-radius:3px;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .tabs button.on{background:var(--soft);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .kv{border-top:1px solid var(--line)}
 .kv div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14.5px}
@@ -616,7 +618,7 @@ footer{background:var(--navy-2);color:#B9C3DE;padding:80px 0 34px}
       <span class="eyebrow"><b>04</b> Coverage</span>
       <h2>One network.<br>Three markets.</h2>
       <p class="lead" style="font-size:15.5px;max-width:470px">Capacity lands at the coast, crosses the borders and reaches tower and fibre sites near your network — so you can serve customers in Kenya, Uganda and Tanzania from a single supplier.</p>
-      <div class="tabs" id="covTabs"><button class="on" data-c="ke">Kenya</button><button data-c="ug">Uganda</button><button data-c="tz">Tanzania</button></div>
+      <div class="tabs" id="covTabs"><button class="on" data-c="ke"><img class="flag" src="assets/flag-ke.svg" alt="">Kenya</button><button data-c="ug"><img class="flag" src="assets/flag-ug.svg" alt="">Uganda</button><button data-c="tz"><img class="flag" src="assets/flag-tz.svg" alt="">Tanzania</button></div>
       <dl class="kv" id="covKv"></dl>
     </div>
     <div class="map reveal">
