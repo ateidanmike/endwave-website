@@ -178,10 +178,8 @@ h3{font-size:clamp(26px,3vw,34px);letter-spacing:-.03em}
 .dc{border:1px solid var(--line);border-radius:var(--r);padding:18px;transition:.3s;background:#fff}
 .dc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .dc .top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--blue);letter-spacing:.1em}
-.dc .racks{display:flex;gap:8px;justify-content:center;margin:20px 0}
-.dc .rack{width:30px;height:48px;border:2px solid #4B5675;border-radius:5px;padding:7px 5px;display:flex;flex-direction:column;gap:4px;position:relative;background:var(--soft)}
-.dc .rack i{height:2px;background:#79B4E0;border-radius:2px}
-.dc .rack b{position:absolute;right:5px;bottom:5px;width:4px;height:4px;border-radius:50%;background:var(--green);animation:blink 1.6s infinite}
+.dc .logo{height:56px;margin:20px 0;display:flex;align-items:center;justify-content:center}
+.dc .logo img{max-height:44px;max-width:80%;object-fit:contain}
 .dc h6{font-size:15px;letter-spacing:-.01em}
 .dc p{font-size:13px;color:var(--muted);margin-bottom:12px}
 .dc .tag{display:inline-block;margin:0 4px 5px 0}
@@ -975,9 +973,8 @@ function setCov(c){
 $$('#covTabs button').forEach(b=>b.onclick=()=>setCov(b.dataset.c));setCov('ke');
 
 /* data centres */
-const dcs=[['UG · KLA','Raxio Uganda','Kampala'],['KE · NBO','ADC Kenya','Nairobi'],['KE · NBO1','iColo NBO1','Nairobi'],['KE · NBO2','iColo NBO2','Nairobi'],['TZ · DAR','Raxio Tanzania','Dar es Salaam']];
-const rack='<div class="rack"><i></i><i></i><i></i><b></b></div>';
-$('#dcs').innerHTML=dcs.map(([c,n,l],i)=>`<div class="dc reveal"><div class="top"><span>${c}</span><span class="dot"></span></div><div class="racks">${rack+rack}</div><h6>${n}</h6><p>${l}</p><span class="tag">Colocation</span><span class="tag">Cross-connect</span></div>`).join('');
+const dcs=[['UG · KLA','Raxio Uganda','Kampala','dc-raxio.svg'],['KE · NBO','ADC Kenya','Nairobi','dc-adc.png'],['KE · NBO1','iColo NBO1','Nairobi','dc-icolo.png'],['KE · NBO2','iColo NBO2','Nairobi','dc-icolo.png'],['TZ · DAR','Raxio Tanzania','Dar es Salaam','dc-raxio.svg']];
+$('#dcs').innerHTML=dcs.map(([c,n,l,logo])=>`<div class="dc reveal"><div class="top"><span>${c}</span><span class="dot"></span></div><div class="logo"><img src="assets/${logo}" alt="${n} logo" loading="lazy"></div><h6>${n}</h6><p>${l}</p><span class="tag">Colocation</span><span class="tag">Cross-connect</span></div>`).join('');
 
 /* pricing */
 const bands=[['Starter',10,50,220,'Up to 50 Mbps',50],['Growth',51,200,200,'50 – 200 Mbps',100],['Pro',201,500,180,'200 – 500 Mbps',300],['Enterprise',501,1500,170,'500 Mbps – 1.5 Gbps',1000],['Carrier',1501,100000,160,'Above 1.5 Gbps',2000]];
