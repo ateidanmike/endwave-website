@@ -212,7 +212,7 @@ h3{font-size:clamp(26px,3vw,34px);letter-spacing:-.03em}
 .calc-side p{font-size:13.5px;color:#B9C3DE}
 .calc-side .btn{margin-top:auto;background:#fff;color:var(--navy);justify-content:center}
 .calc-side .btn:hover{background:var(--cyan);color:#fff}
-.bands{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:16px;background:#fff}
+.bands{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:16px;background:#fff}
 .band{padding:18px;border-right:1px solid var(--line);transition:.3s;cursor:pointer}
 .band:last-child{border:0}
 .band h6{font-size:14.5px}
@@ -661,17 +661,17 @@ footer{background:var(--navy-2);color:#B9C3DE;padding:80px 0 34px}
   <div class="wrap">
     <div class="head reveal">
       <div><span class="eyebrow"><b>06</b> Sizing &amp; rates</span><h2>How much do you need?</h2></div>
-      <p>Set the size your network needs and the monthly figure follows. All rates in KES per Mbps per month — the bigger the link, the less each Mbps costs. Voice, SMS and platforms are quoted on request.</p>
+      <p>Set the size your network needs and the monthly figure follows. All rates per Mbps per month in local currency — KES, UGX or TZS — the bigger the link, the less each Mbps costs. Voice, SMS and platforms are quoted on request.</p>
     </div>
     <div class="calc reveal">
       <div class="calc-main">
         <div class="calc-top">
-          <div class="tabs" id="calcTabs"><button class="on" data-c="Kenya">KE Kenya</button><button data-c="Uganda">UG Uganda</button><button data-c="Tanzania">TZ Tanzania</button></div>
-          <div class="qty"><button type="button" id="minus" aria-label="Decrease">−</button><input id="mbps" type="number" min="10" max="100000" value="100" aria-label="Capacity in Mbps"><select id="unit"><option value="1">Mbps</option><option value="1000">Gbps</option></select><button type="button" id="plus" aria-label="Increase">+</button></div>
+          <div class="tabs" id="calcTabs"><button class="on" data-c="Kenya"><img class="flag" src="assets/flag-ke.svg" alt="">Kenya</button><button data-c="Uganda"><img class="flag" src="assets/flag-ug.svg" alt="">Uganda</button><button data-c="Tanzania"><img class="flag" src="assets/flag-tz.svg" alt="">Tanzania</button></div>
+          <div class="qty"><button type="button" id="minus" aria-label="Decrease">−</button><input id="mbps" type="number" min="50" max="100000" value="100" aria-label="Capacity in Mbps"><select id="unit"><option value="1">Mbps</option><option value="1000">Gbps</option></select><button type="button" id="plus" aria-label="Increase">+</button></div>
         </div>
         <div class="range"><input type="range" id="slider" min="0" max="600" value="40" aria-label="Capacity slider"></div>
-        <div class="ticks"><span>10</span><span>50</span><span>200</span><span>500</span><span>1.5G</span><span>10G</span><span>100G</span></div>
-        <div class="price"><small>KES</small><b id="total">20,600</b><span>/ month</span></div>
+        <div class="ticks"><span>50</span><span>100</span><span>200</span><span>500</span><span>1G</span><span>10G</span><span>100G</span></div>
+        <div class="price"><small id="cur">KES</small><b id="total">20,600</b><span>/ month</span></div>
         <p class="price-note" id="note"></p>
       </div>
       <div class="calc-side">
@@ -685,7 +685,7 @@ footer{background:var(--navy-2);color:#B9C3DE;padding:80px 0 34px}
     <div class="ready reveal">
       <div><small>Before activation</small><h5>Site readiness</h5><p>Last-mile fibre pulled to your BTS · router with BGP or static routing and a free optical port (e.g. SFP-enabled MikroTik) · power redundancy recommended.</p></div>
       <div><small>Hardware &amp; splicing</small><h5>On the day</h5><p>SFP modules, 1.25G 10 km — Huawei, Sopto or BIDI (one core) · a splicing technician on standby once the site is confirmed.</p></div>
-      <div class="fee"><small>Activation</small><h5>KES 11,600</h5><p>One-time port activation fee. Then billed monthly per Mbps.</p></div>
+      <div class="fee"><small>Activation</small><h5 id="actFee">KES 11,600</h5><p>One-time port activation fee. Then billed monthly per Mbps.</p></div>
     </div>
   </div>
 </section>
@@ -979,30 +979,38 @@ const dcs=[['UG · KLA','Raxio Uganda','Kampala','dc-raxio.svg'],['KE · NBO','A
 $('#dcs').innerHTML=dcs.map(([c,n,l,logo])=>`<div class="dc reveal"><div class="top"><span>${c}</span><span class="dot"></span></div><div class="logo"><img src="assets/${logo}" alt="${n} logo" loading="lazy"></div><h6>${n}</h6><p>${l}</p><span class="tag">Colocation</span><span class="tag">Cross-connect</span></div>`).join('');
 
 /* pricing */
-const bands=[['Starter',10,50,220,'Up to 50 Mbps',50],['Growth',51,200,200,'50 – 200 Mbps',100],['Pro',201,500,180,'200 – 500 Mbps',300],['Enterprise',501,1500,170,'500 Mbps – 1.5 Gbps',1000],['Carrier',1501,100000,160,'Above 1.5 Gbps',2000]];
-const stops=[10,50,200,500,1500,10000,100000];
+/* Tiers: [name, from Mbps, to Mbps, label, example Mbps]. Rates are per Mbps per month, by country (same order as tiers). */
+const bands=[['Starter',50,199,'50 – 199 Mbps',100],['Growth',200,500,'200 – 500 Mbps',300],['Pro',501,999,'501 – 999 Mbps',700],['Carrier',1000,100000,'1 Gbps and above',2000]];
+const cur={
+  Kenya:   {code:'KES',rates:[190,180,170,160],     activation:11600},
+  Uganda:  {code:'UGX',rates:[5200,4950,4700,4400], activation:320000},
+  Tanzania:{code:'TZS',rates:[3600,3420,3230,3040], activation:220000}
+};
+const stops=[50,100,200,500,1000,10000,100000];
 let mbps=100,country='Kenya';
 const toSlider=v=>{for(let i=0;i<6;i++){if(v<=stops[i+1]){const a=Math.log(stops[i]),b=Math.log(stops[i+1]);return (i+(Math.log(v)-a)/(b-a))*100}}return 600};
-const fromSlider=s=>{const i=Math.min(5,Math.floor(s/100)),t=s/100-i;const v=Math.exp(Math.log(stops[i])+t*(Math.log(stops[i+1])-Math.log(stops[i])));return v<1000?Math.round(v/10)*10||10:v<10000?Math.round(v/100)*100:Math.round(v/1000)*1000};
-$('#bands').innerHTML=bands.map((b,i)=>`<div class="band" data-i="${i}"><h6>${b[0]}</h6><small>${b[4]}</small><b><em>KES </em>${b[3]}<em>/Mbps</em></b></div>`).join('');
+const fromSlider=s=>{const i=Math.min(5,Math.floor(s/100)),t=s/100-i;const v=Math.exp(Math.log(stops[i])+t*(Math.log(stops[i+1])-Math.log(stops[i])));return v<1000?Math.max(50,Math.round(v/10)*10):v<10000?Math.round(v/100)*100:Math.round(v/1000)*1000};
+$('#bands').innerHTML=bands.map((b,i)=>`<div class="band" data-i="${i}"><h6>${b[0]}</h6><small>${b[3]}</small><b><em class="bc">KES </em><span class="br">${cur.Kenya.rates[i]}</span><em>/Mbps</em></b></div>`).join('');
 const label=v=>v>=1000?(v/1000).toLocaleString('en-US',{maximumFractionDigits:1})+' Gbps':v+' Mbps';
 function render(fromInput){
-  mbps=Math.max(10,Math.min(100000,mbps));
-  const bi=bands.findIndex(b=>mbps<=b[2]);const b=bands[bi<0?4:bi];
-  $('#total').textContent=fmt(mbps*b[3]);
-  $('#note').innerHTML=`<b>KES ${b[3]}</b> per Mbps per month · <b>${b[4]}</b> tier · plus <b>KES 11,600</b> one-time port activation · indicative until feasibility is confirmed${country!=='Kenya'?` · ${country} quotes can be billed in USD`:''}.`;
+  mbps=Math.max(50,Math.min(100000,mbps));
+  const bi=bands.findIndex(b=>mbps<=b[2]);const i=bi<0?bands.length-1:bi,b=bands[i],c=cur[country],rate=c.rates[i];
+  $('#cur').textContent=c.code;$('#actFee').textContent=`${c.code} ${fmt(c.activation)}`;
+  $$('.band').forEach((el,j)=>{el.querySelector('.bc').textContent=c.code+' ';el.querySelector('.br').textContent=fmt(c.rates[j])});
+  $('#total').textContent=fmt(mbps*rate);
+  $('#note').innerHTML=`<b>${c.code} ${fmt(rate)}</b> per Mbps per month · <b>${b[3]}</b> tier · plus <b>${c.code} ${fmt(c.activation)}</b> one-time port activation · indicative until feasibility is confirmed${country!=='Kenya'?` · ${country} quotes can also be billed in USD`:''}.`;
   $('#sideTitle').textContent=`${label(mbps)} · ${country}`;
-  $$('.band').forEach(el=>el.classList.toggle('on',+el.dataset.i===bands.indexOf(b)));
+  $$('.band').forEach(el=>el.classList.toggle('on',+el.dataset.i===i));
   const s=toSlider(mbps);const sl=$('#slider');if(!fromInput)sl.value=s;sl.style.setProperty('--p',s/6+'%');
   const u=+$('#unit').value;if(document.activeElement!==$('#mbps'))$('#mbps').value=+(mbps/u).toFixed(u>1?1:0);
 }
 $('#slider').oninput=e=>{mbps=fromSlider(+e.target.value);render(true)};
-$('#mbps').oninput=e=>{const v=+e.target.value*+$('#unit').value;if(v>=10){mbps=v;render()}};
+$('#mbps').oninput=e=>{const v=+e.target.value*+$('#unit').value;if(v>=50){mbps=v;render()}};
 $('#mbps').onblur=()=>render();
 $('#unit').onchange=()=>{$('#mbps').blur();render()};
-const step=d=>{const i=stops.findIndex(s=>mbps<s);const inc=mbps<50||(d<0&&mbps<=50)?10:mbps<1000?50:mbps<10000?500:10000;mbps=d>0?mbps+inc:mbps-inc;render()};
+const step=d=>{const i=stops.findIndex(s=>mbps<s);const inc=mbps<1000||(d<0&&mbps<=1000)?50:mbps<10000?500:10000;mbps=d>0?mbps+inc:mbps-inc;render()};
 $('#plus').onclick=()=>step(1);$('#minus').onclick=()=>step(-1);
-$$('.band').forEach(el=>el.onclick=()=>{mbps=bands[+el.dataset.i][5];render()});
+$$('.band').forEach(el=>el.onclick=()=>{mbps=bands[+el.dataset.i][4];render()});
 $$('#calcTabs button').forEach(b=>b.onclick=()=>{country=b.dataset.c;$$('#calcTabs button').forEach(x=>x.classList.toggle('on',x===b));render()});
 render();
 $('#reqCap').onclick=()=>{$('#fCap').value=mbps;$('#fCountry').value=country;pick('capacity',true);};
