@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Assemble Endwave site pages from shared shell + page bodies."""
-import pathlib, sys
+import pathlib, sys, hashlib
 
 SRC = pathlib.Path(__file__).parent / "pages"
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
@@ -129,7 +129,7 @@ def page(title, desc, active, body):
 <link rel="icon" href="assets/endwave-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v={VER}">
 </head>
 <body data-page="{active}">
 {SPRITE}
@@ -138,7 +138,7 @@ def page(title, desc, active, body):
 {body}
 </main>
 {FOOTER}
-<script src="script.js"></script>
+<script src="script.js?v={VER}"></script>
 </body>
 </html>
 """
@@ -150,6 +150,7 @@ PAGES = {
   "contact.html": ("Contact Endwave — Request capacity, a demo or a quote", "Request wholesale capacity, a billing system demo or a quote for voice, call centres, bulk SMS and e-commerce in Kenya, Uganda and Tanzania.", "contact"),
 }
 
+VER = hashlib.md5((OUT / "styles.css").read_bytes() + (OUT / "script.js").read_bytes()).hexdigest()[:8]
 ctx = dict(I=I, BILLING=BILLING, PPPOE=PPPOE, CAPACITY=CAPACITY, CALLC=CALLC)
 for fn, (t, d, a) in PAGES.items():
     src = (SRC / fn).read_text()
