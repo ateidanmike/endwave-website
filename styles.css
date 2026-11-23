@@ -567,3 +567,11 @@ footer ul a.ext::after{content:" ↗";font-size:12px;opacity:.7}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* country map icons */
+.cm{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 9px;vertical-align:middle}
+.cm>span{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.92em;font-weight:600;letter-spacing:.04em}
+.cm svg{width:1.35em;height:1.35em;color:var(--cyan);flex:none}
+.dark .cm svg,.pstats .cm svg,.stat .cm svg{color:var(--sky)}
+.drop .cm svg{color:var(--blue)}
+.mini-list li .cm svg{margin-top:0;width:1.35em;height:1.35em;color:var(--sky)}
