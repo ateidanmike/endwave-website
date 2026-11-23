@@ -46,8 +46,8 @@ if (orbit) {
 /* ---------- logo strip ---------- */
 const track = $('#track');
 if (track) {
-  const items = [['pay-mpesa.png', 'M-Pesa', 30], ['pay-airtel.svg', 'Airtel Money', 34], ['pay-visa.png', 'Visa', 20], ['pay-mastercard.png', 'Mastercard', 32], ['pay-amex.png', 'American Express', 34], ['dc-icolo.png', 'iColo', 26], ['dc-raxio.svg', 'Raxio', 24], ['dc-adc.png', 'Africa Data Centres', 30]];
-  const one = items.map(([f, a, h]) => `<img src="assets/${f}" alt="${a}" style="height:${h}px" loading="lazy">`).join('') + '<span>Starlink</span><span>MikroTik</span><span>BGP · AS329846</span>';
+  const items = [['pay-mpesa.png', 'M-Pesa', 30], ['pay-airtel.svg', 'Airtel Money', 34], ['pay-visa.png', 'Visa', 20], ['pay-mastercard.png', 'Mastercard', 32], ['pay-amex.png', 'American Express', 34], ['dc-icolo.png', 'iColo', 26], ['dc-raxio.svg', 'Raxio', 24], ['dc-adc.png', 'Africa Data Centres', 30], ['logo-starlink.svg', 'Starlink', 54], ['logo-mikrotik.png', 'MikroTik', 24]];
+  const one = items.map(([f, a, h]) => `<img src="assets/${f}" alt="${a}" style="height:${h}px" loading="lazy">`).join('') + '<span>BGP · AS329846</span>';
   track.innerHTML = one + one;
   $$('img', track).forEach((im, i) => { if (i >= items.length + 0 && i < items.length * 2) im.alt = ''; });
 }
