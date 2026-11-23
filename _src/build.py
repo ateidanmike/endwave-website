@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 """Assemble Endwave site pages from shared shell + page bodies."""
-import pathlib, sys, hashlib
+import pathlib, sys, hashlib, json, datetime
 
 SRC = pathlib.Path(__file__).parent / "pages"
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
+
+# ---- site settings ------------------------------------------------------
+SITE = "https://www.endwaveafrica.com"   # final domain, used for canonical URLs, previews and the sitemap
+GA_ID = ""      # Google Analytics 4 measurement ID, e.g. "G-XXXXXXXXXX". Empty = no analytics.
+                # If you set this, update sections 2 and 10 of _src/pages/privacy.html (they say no analytics is used).
+GSC_TOKEN = ""  # Google Search Console HTML-tag verification token. Empty = not added.
 
 BILLING = "https://demo.endwaveafrica.com/login"
 PPPOE = "https://demo.endwaveafrica.com/pppoe"
@@ -124,7 +130,36 @@ BASE404 = """<meta name="robots" content="noindex">
 <script>document.write('<base href="' + (location.pathname.indexOf('/endwave-website/') === 0 ? '/endwave-website/' : '/') + '">')</script>
 """
 
-def page(title, desc, active, body):
+ORG = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "Organization", "@id": SITE + "/#org", "name": "Endwave NextGen Worldwide", "alternateName": "Endwave",
+     "url": SITE + "/", "logo": SITE + "/assets/endwave-logo-stacked.png", "image": SITE + "/assets/og-image.png",
+     "description": "Wholesale internet capacity, VoIP and voice, call centres, bulk SMS, billing systems and e-commerce across Kenya, Uganda and Tanzania.",
+     "email": "kenya@endwaveafrica.com", "telephone": "+254799611864",
+     "areaServed": [{"@type": "Country", "name": n} for n in ("Kenya", "Uganda", "Tanzania")],
+     "contactPoint": [
+       {"@type": "ContactPoint", "contactType": "sales", "email": "kenya@endwaveafrica.com", "telephone": "+254799611864", "areaServed": "KE", "availableLanguage": ["English", "Swahili"]},
+       {"@type": "ContactPoint", "contactType": "sales", "email": "uganda@endwaveafrica.com", "areaServed": "UG", "availableLanguage": "English"},
+       {"@type": "ContactPoint", "contactType": "sales", "email": "tz@endwaveafrica.com", "areaServed": "TZ", "availableLanguage": ["English", "Swahili"]}],
+     "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in
+       ("Wholesale internet capacity", "VoIP, MMS & voice", "Call centres", "Bulk SMS", "ISP billing system", "Integrated e-commerce")]},
+    {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Endwave", "publisher": {"@id": SITE + "/#org"}}]}
+
+def head_extra(fn, active):
+    url = SITE + "/" + ("" if fn == "index.html" else fn)
+    h = ""
+    if active != "404":
+        h += f'<link rel="canonical" href="{url}">\n<meta property="og:url" content="{url}">\n'
+    if fn == "index.html":
+        h += '<script type="application/ld+json">' + json.dumps(ORG, ensure_ascii=False) + '</script>\n'
+    if GSC_TOKEN:
+        h += f'<meta name="google-site-verification" content="{GSC_TOKEN}">\n'
+    if GA_ID:
+        h += f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{GA_ID}");</script>\n'
+    return h
+
+def page(title, desc, active, body, fn="index.html"):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,8 +170,18 @@ def page(title, desc, active, body):
 <meta name="theme-color" content="#040914">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="assets/endwave-logo-stacked.png">
-<link rel="icon" href="assets/endwave-mark.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwave">
+<meta property="og:image" content="{SITE}/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Endwave: six services, one network for Africa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{SITE}/assets/og-image.png">
+{head_extra(fn, active)}<link rel="icon" href="assets/endwave-mark.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v={VER}">
@@ -168,12 +213,21 @@ ctx = dict(I=I, BILLING=BILLING, PPPOE=PPPOE, CAPACITY=CAPACITY, CALLC=CALLC)
 for fn, (t, d, a) in PAGES.items():
     src = (SRC / fn).read_text()
     body = eval('f"""' + src.replace('"""', '\\"\\"\\"') + '"""', ctx)
-    (OUT / fn).write_text(page(t, d, a, body))
+    (OUT / fn).write_text(page(t, d, a, body, fn))
     print("built", fn, len(body))
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import products
 for k in products.ORDER:
     pr = products.PRODUCTS[k]
-    (OUT / pr["file"]).write_text(page(pr["title"], pr["desc"], k, products.render(k)))
+    (OUT / pr["file"]).write_text(page(pr["title"], pr["desc"], k, products.render(k), pr["file"]))
     print("built", pr["file"])
+
+# ---- sitemap & robots ---------------------------------------------------
+today = datetime.date.today().isoformat()
+prio = {"index.html": "1.0", "capacity.html": "0.9", "contact.html": "0.8", "privacy.html": "0.3", "terms.html": "0.3"}
+files = [f for f in list(PAGES) + [products.PRODUCTS[k]["file"] for k in products.ORDER] if f != "404.html"]
+(OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
+    f'  <url><loc>{SITE}/{"" if f == "index.html" else f}</loc><lastmod>{today}</lastmod><priority>{prio.get(f, "0.7")}</priority></url>\n' for f in files) + "</urlset>\n")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /_src/\n\nSitemap: {SITE}/sitemap.xml\n")
+print("built sitemap.xml, robots.txt")
