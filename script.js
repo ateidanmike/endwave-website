@@ -227,3 +227,52 @@ if (demo) {
 
 watch();
 })();
+
+/* ---------- 404 ---------- */
+(() => {
+  const tr = document.getElementById('trace'); if (!tr) return;
+  const path = decodeURIComponent(location.pathname.replace(/^\/endwave-website/, '')) || '/';
+  const esc = t => t.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const lines = [
+    ['$ ', `traceroute endwave${esc(path.length > 34 ? path.slice(0, 34) + '…' : path)}`, 'cmd'],
+    ['', 'tracing route over AS329846, 30 hops max', 'dim'],
+    ['', ' 1  nbo-core.endwave        1.2 ms  ✓', 'ok'],
+    ['', ' 2  msa-subsea-landing      4.8 ms  ✓', 'ok'],
+    ['', ' 3  kla-core.endwave        9.1 ms  ✓', 'ok'],
+    ['', ' 4  dar-core.endwave       12.4 ms  ✓', 'ok'],
+    ['', ' 5  * * *   request timed out', 'warn'],
+    ['', ' 6  * * *   checked under the sofa', 'warn'],
+    ['', ' 7  * * *   asked the router, it shrugged', 'warn'],
+    ['', '', ''],
+    ['', 'ERROR 404: destination page unreachable', 'err'],
+    ['', 'suggestion: route home via index.html', 'dim'],
+    ['$ ', '', 'cmd cur']];
+  let i = 0;
+  const next = () => {
+    if (i >= lines.length) return;
+    const [pre, txt, cls] = lines[i++];
+    const el = document.createElement('div'); el.className = cls; el.innerHTML = (pre ? `<b>${pre}</b>` : '') + txt; tr.appendChild(el);
+    setTimeout(next, i === 1 ? 700 : cls === 'warn' ? 650 : 260);
+  };
+  setTimeout(next, 400);
+
+  const ex = [
+    'Even with 99.9% uptime, this page found the 0.1%.',
+    'This page went for a swim in Lake Victoria and hasn\'t come back.',
+    'We checked all five data centres. It\'s not under the sofa either.',
+    'This address is uncontended, unthrottled and, sadly, unreal.',
+    'Our NOC is on it. Well, they will be once they stop laughing.',
+    'We sent the page an SMS asking it to come home. Delivered, but no reply.',
+    'It\'s not you, it\'s the link. Okay, maybe it\'s a little bit the link.',
+    'Somewhere in Dar es Salaam, a router is shrugging.',
+    'We put the page on hold. The hold music is very good, but it\'s still on hold.',
+    'This page was billed, paid and then promptly disconnected itself.',
+    'The page asked for 100 Gbps of privacy and we respected that.',
+    'Turns out you can\'t splice a URL back together. We tried.'];
+  let n = 0;
+  const btn = document.getElementById('exBtn'), t = document.getElementById('exT'), num = document.getElementById('exN');
+  btn.addEventListener('click', () => {
+    n = (n + 1) % ex.length; t.classList.remove('pop'); void t.offsetWidth;
+    t.textContent = ex[n]; num.textContent = n + 1; t.classList.add('pop');
+  });
+})();

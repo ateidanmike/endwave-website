@@ -120,13 +120,17 @@ FOOTER = f"""<footer><div class="wrap">
 
 CM = ('<span class="cm">' + ''.join(f'<span title="{n}"><svg aria-hidden="true"><use href="#i-map-{c}"/></svg>{c.upper()}</span>' for c, n in [('ke', 'Kenya'), ('ug', 'Uganda'), ('tz', 'Tanzania')]) + '</span>')
 
+BASE404 = """<meta name="robots" content="noindex">
+<script>document.write('<base href="' + (location.pathname.indexOf('/endwave-website/') === 0 ? '/endwave-website/' : '/') + '">')</script>
+"""
+
 def page(title, desc, active, body):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title}</title>
+{BASE404 if active == "404" else ""}<title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#040914">
 <meta property="og:title" content="{title}">
@@ -155,6 +159,7 @@ PAGES = {
   "about.html": ("About Endwave NextGen Worldwide", "Endwave runs its own network (AS329846) and the platforms that operators and businesses across Kenya, Uganda and Tanzania build on.", "about"),
   "privacy.html": ("Privacy Policy — Endwave", "How Endwave NextGen Worldwide collects, uses and protects personal data, under the data protection laws of Kenya, Uganda and Tanzania.", "privacy"),
   "terms.html": ("Terms of Use — Endwave", "The terms that apply when you use the Endwave website.", "terms"),
+  "404.html": ("Page not found — Endwave", "This page got lost in transit.", "404"),
   "contact.html": ("Contact Endwave — Request capacity, a demo or a quote", "Request wholesale capacity, a billing system demo or a quote for voice, call centres, bulk SMS and e-commerce in Kenya, Uganda and Tanzania.", "contact"),
 }
 
