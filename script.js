@@ -29,7 +29,7 @@ const io = new IntersectionObserver(es => es.forEach(en => {
 }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
 function count(el) { const end = +el.dataset.count; let s = null; const tick = ts => { s = s || ts; const p = Math.min(1, (ts - s) / 1200); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }
 const watch = () => $$('.reveal:not(.in)').forEach(el => io.observe(el));
-['.bento', '.svc', '.ways', '.adv', '.dcs', '.vals', '.combos', '.steps', '.req', '.launch'].forEach(sel => $$(sel).forEach(g => [...g.children].forEach((c, i) => c.style.transitionDelay = (i % 6) * 70 + 'ms')));
+['.bento', '.svc', '.ways', '.adv', '.dcs', '.vals', '.combos', '.steps', '.req', '.launch', '.plans', '.rel'].forEach(sel => $$(sel).forEach(g => [...g.children].forEach((c, i) => c.style.transitionDelay = (i % 6) * 70 + 'ms')));
 
 /* ---------- hero orbit ---------- */
 const orbit = $('#orbit');
@@ -169,8 +169,8 @@ if ($('#qa')) {
     ['Does the billing system work with M-Pesa?', 'Yes. Payments from M-Pesa, Airtel Money and cards reconcile automatically, and receipts and reminders go out by SMS and email.'],
     ["What if there's no fibre at my site?", 'We can deliver over Starlink satellite or licensed point-to-point radio instead, and combine either with fibre later as a backup path.']];
   $('#qa').innerHTML = faq.map(([q, a], i) => `<div class="q${i ? '' : ' open'}"><button type="button" aria-expanded="${!i}"><small>${String(i + 1).padStart(2, '0')}</small><span>${q}</span><i></i></button><div class="a"><div><p>${a}</p></div></div></div>`).join('');
-  $$('.q button').forEach(b => b.addEventListener('click', () => { const q = b.parentElement, o = !q.classList.contains('open'); $$('.q').forEach(x => { x.classList.remove('open'); $('button', x).setAttribute('aria-expanded', 'false'); }); if (o) { q.classList.add('open'); b.setAttribute('aria-expanded', 'true'); } }));
 }
+$$('.q button').forEach(b => b.addEventListener('click', () => { const q = b.parentElement, o = !q.classList.contains('open'); $$('.q').forEach(x => { x.classList.remove('open'); $('button', x).setAttribute('aria-expanded', 'false'); }); if (o) { q.classList.add('open'); b.setAttribute('aria-expanded', 'true'); } }));
 
 /* ---------- forms ---------- */
 const mails = { Kenya: 'kenya@endwaveafrica.com', Uganda: 'uganda@endwaveafrica.com', Tanzania: 'tz@endwaveafrica.com' };

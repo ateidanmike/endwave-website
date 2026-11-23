@@ -12,6 +12,8 @@ Live preview: https://ateidanmike.github.io/endwave-website/
 | `capacity.html` | Wholesale capacity: delivery, coverage, data centres, pricing calculator |
 | `about.html` | About Endwave |
 | `contact.html` | Service request, billing demo request, FAQ |
+| `sms.html`, `voice.html`, `callcentre.html`, `ecommerce.html` | Product pages (content in `_src/products.py`) |
+| `privacy.html`, `terms.html` | Privacy policy and terms of use |
 
 Shared files: `styles.css`, `script.js`, `assets/`.
 

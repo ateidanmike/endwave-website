@@ -58,13 +58,14 @@ def nav(active):
           <a class="di" href="{BILLING}" target="_blank" rel="noopener"><span class="ic" style="--c:#2980C3;background:#2980C3">{I('bill')}</span><span><b>Endwave Billing <span class="tag-live">LIVE</span></b><small>ISP billing, M-Pesa collections &amp; CRM</small></span></a>
           <a class="di" href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#15B0E3;background:#15B0E3">{I('gauge')}</span><span><b>Wholesale Operations <span class="tag-live">LIVE</span></b><small>Capacity orders, links &amp; utilisation</small></span></a>
           <a class="di" href="{PPPOE}" target="_blank" rel="noopener"><span class="ic" style="--c:#6F6BE8;background:#6F6BE8">{I('net')}</span><span><b>PPPoE Manager</b><small>Subscriber sessions, plans &amp; routers</small></span></a>
-          <a class="di" href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#14A894;background:#14A894">{I('head')}</span><span><b>Call Centre <span class="tag-live">LIVE</span></b><small>Queues, IVR, agents &amp; recordings</small></span></a>
+          <a class="di" href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#14A894;background:#14A894">{I('head')}</span><span><b>Call Centre login <span class="tag-live">LIVE</span></b><small>Agent &amp; supervisor console</small></span></a>
         </div>
         <h6>Communications &amp; commerce</h6>
         <div class="grid">
-          <a class="di" href="index.html#sms"><span class="ic" style="--c:#E59A1C;background:#E59A1C">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
-          <a class="di" href="index.html#voice"><span class="ic" style="--c:#1DB974;background:#1DB974">{I('phone')}</span><span><b>VoIP, MMS &amp; voice</b><small>SIP trunks, hosted PBX &amp; numbers</small></span></a>
-          <a class="di" href="index.html#commerce"><span class="ic" style="--c:#E0533D;background:#E0533D">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
+          <a class="di" href="sms.html"><span class="ic" style="--c:#E59A1C;background:#E59A1C">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
+          <a class="di" href="voice.html"><span class="ic" style="--c:#1DB974;background:#1DB974">{I('phone')}</span><span><b>VoIP, MMS &amp; voice</b><small>SIP trunks, hosted PBX &amp; numbers</small></span></a>
+          <a class="di" href="callcentre.html"><span class="ic" style="--c:#14A894;background:#14A894">{I('head')}</span><span><b>Call Centre</b><small>IVR, queues, recording &amp; dashboards</small></span></a>
+          <a class="di" href="ecommerce.html"><span class="ic" style="--c:#E0533D;background:#E0533D">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
         </div>
       </div></li>
     <li class="dd"><button type="button" aria-expanded="false">Services {I('chev','chev')}</button>
@@ -94,11 +95,11 @@ FOOTER = f"""<footer><div class="wrap">
       <li><a class="ext" href="{CALLC}" target="_blank" rel="noopener">Call Centre</a></li></ul></div>
     <div><h6>Services</h6><ul>
       <li><a href="capacity.html">Internet capacity</a></li>
-      <li><a href="index.html#voice">VoIP, MMS &amp; voice</a></li>
-      <li><a href="index.html#callcentre">Call centres</a></li>
-      <li><a href="index.html#sms">Bulk SMS</a></li>
+      <li><a href="voice.html">VoIP, MMS &amp; voice</a></li>
+      <li><a href="callcentre.html">Call centres</a></li>
+      <li><a href="sms.html">Bulk SMS</a></li>
       <li><a href="index.html#billing">Billing system</a></li>
-      <li><a href="index.html#commerce">E-commerce</a></li></ul></div>
+      <li><a href="ecommerce.html">E-commerce</a></li></ul></div>
     <div><h6>Network</h6><ul>
       <li><a href="capacity.html#coverage">Coverage</a></li>
       <li><a href="capacity.html#datacentres">Data centres</a></li>
@@ -113,7 +114,7 @@ FOOTER = f"""<footer><div class="wrap">
       <li><a href="contact.html">Contact page</a></li></ul></div>
   </div>
   <div class="f-big" aria-hidden="true">ENDWAVE</div>
-  <div class="f-bot"><span>© 2026 Endwave NextGen Worldwide. All rights reserved.</span><span class="mono">AS329846 · Kenya · Uganda · Tanzania</span>
+  <div class="f-bot"><span>© 2026 Endwave NextGen Worldwide. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span><span class="mono">AS329846 · Kenya · Uganda · Tanzania</span>
     <div class="f-soc"><a href="mailto:kenya@endwaveafrica.com" aria-label="Email">{I('mail')}</a><a href="https://wa.me/254799611864" target="_blank" rel="noopener" aria-label="WhatsApp">{I('wa')}</a></div></div>
 </div></footer>"""
 
@@ -152,6 +153,8 @@ PAGES = {
   "index.html": ("Endwave — Six services. One network for Africa.", "Wholesale internet capacity, VoIP, call centres, bulk SMS, billing and e-commerce across Kenya, Uganda and Tanzania — from one provider on one network.", "home"),
   "capacity.html": ("Wholesale Internet Capacity — Endwave", "Dedicated, uncontended capacity from 50 Mbps to 100 Gbps over fibre, Starlink or point-to-point in Kenya, Uganda and Tanzania. Per-Mbps pricing in KES, UGX and TZS.", "capacity"),
   "about.html": ("About Endwave NextGen Worldwide", "Endwave runs its own network (AS329846) and the platforms that operators and businesses across Kenya, Uganda and Tanzania build on.", "about"),
+  "privacy.html": ("Privacy Policy — Endwave", "How Endwave NextGen Worldwide collects, uses and protects personal data, under the data protection laws of Kenya, Uganda and Tanzania.", "privacy"),
+  "terms.html": ("Terms of Use — Endwave", "The terms that apply when you use the Endwave website.", "terms"),
   "contact.html": ("Contact Endwave — Request capacity, a demo or a quote", "Request wholesale capacity, a billing system demo or a quote for voice, call centres, bulk SMS and e-commerce in Kenya, Uganda and Tanzania.", "contact"),
 }
 
@@ -162,3 +165,10 @@ for fn, (t, d, a) in PAGES.items():
     body = eval('f"""' + src.replace('"""', '\\"\\"\\"') + '"""', ctx)
     (OUT / fn).write_text(page(t, d, a, body))
     print("built", fn, len(body))
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import products
+for k in products.ORDER:
+    pr = products.PRODUCTS[k]
+    (OUT / pr["file"]).write_text(page(pr["title"], pr["desc"], k, products.render(k)))
+    print("built", pr["file"])
