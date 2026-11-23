@@ -1,35 +1,37 @@
-# Endwave — Capacity, Voice, SMS, Billing & E-commerce
+# Endwave — Six services. One network for Africa.
 
-Website for **Endwave NextGen Worldwide** (AS329846), a 6-in-1 provider serving Kenya, Uganda and Tanzania:
+Website for **Endwave NextGen Worldwide**: wholesale internet capacity, VoIP & voice, call centres, bulk SMS, billing and integrated e-commerce across Kenya, Uganda and Tanzania.
 
-1. Wholesale internet capacity (100 Mbps – 100 Gbps) + colocation
-2. VoIP, MMS & voice
-3. Call centres
-4. Bulk SMS
-5. Billing system
-6. Integrated e-commerce
+Live preview: https://ateidanmike.github.io/endwave-website/
 
-Built with plain HTML, CSS and JavaScript. No build step required.
+## Pages
 
-## Structure
+| File | Page |
+|---|---|
+| `index.html` | Home: platforms, network, services |
+| `capacity.html` | Wholesale capacity: delivery, coverage, data centres, pricing calculator |
+| `about.html` | About Endwave |
+| `contact.html` | Service request, billing demo request, FAQ |
 
-```
-index.html      Self-contained page (markup, styles, scripts, embedded logos)
-assets/         Logo and brand mark source files
-```
+Shared files: `styles.css`, `script.js`, `assets/`.
+
+## Platform links
+
+- Billing: https://demo.endwaveafrica.com/login
+- PPPoE: https://demo.endwaveafrica.com/pppoe
+- Wholesale Operations: https://capacity.endwaveafrica.com/
+- Call Centre: https://callcenter.endwaveafrica.com/admin
 
 ## Run locally
-
-Open `index.html` in a browser, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-## Deploy
-
-Works on any static host (GitHub Pages, Netlify, Vercel, cPanel). For GitHub Pages: Settings → Pages → Deploy from branch `main`, root folder.
-
 ---
 
 Built by [Atei DevOps](https://ateidevops.co.ke).
+
+## Editing pages
+
+Page bodies live in `_src/pages/`; the shared nav, footer and icons are in `_src/build.py`. After editing, run `python3 _src/build.py` to regenerate the HTML.

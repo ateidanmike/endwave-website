@@ -1,0 +1,127 @@
+<section class="phero dark" style="padding-bottom:90px">
+  <div class="gridbg"></div><div class="glow"></div>
+  <div class="wrap" style="position:relative">
+    <div class="crumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+    <span class="eyebrow line">Contact</span>
+    <h1>Tell us what you need. We'll come back with a <span class="grad-t">straight answer.</span></h1>
+    <p>A capacity quote, a billing demo, a voice or SMS setup: whichever it is, you'll be talking to the people who build and run it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cstrip">
+      <div class="ci"><span class="ic">{I('mail')}</span><div><b>Kenya</b><a href="mailto:kenya@endwaveafrica.com">kenya@endwaveafrica.com</a></div></div>
+      <div class="ci"><span class="ic">{I('globe')}</span><div><b>Uganda &amp; Tanzania</b><a href="mailto:uganda@endwaveafrica.com">uganda@endwaveafrica.com</a><a href="mailto:tz@endwaveafrica.com">tz@endwaveafrica.com</a></div></div>
+      <div class="ci"><span class="ic">{I('phone')}</span><div><b>Phone &amp; WhatsApp</b><a href="tel:+254799611864">+254 799 611 864</a><a href="https://wa.me/254799611864" target="_blank" rel="noopener">Chat on WhatsApp</a></div></div>
+      <div class="ci"><span class="ic">{I('clock')}</span><div><b>Hours</b><span>NOC 24/7</span><span>Sales Mon–Fri, 8am–6pm EAT</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="request" style="padding-top:90px">
+  <div class="wrap cgrid">
+    <div>
+      <span class="eyebrow line">Service request</span>
+      <h2 style="font-size:clamp(32px,4vw,46px)">Request capacity or a quote.</h2>
+      <p class="lead" style="font-size:16.5px">Choose one service or several. We'll confirm feasibility and send a single quotation. Nothing is due to send this request.</p>
+      <form class="form f" id="reqForm" novalidate>
+        <div id="formBody">
+          <label>Services <em>*</em></label>
+          <div class="svc-pick" id="svcPick">
+            <label><input type="checkbox" name="svc" value="Internet capacity" data-k="capacity">Internet capacity</label>
+            <label><input type="checkbox" name="svc" value="VoIP, MMS & voice" data-k="voice">VoIP &amp; voice</label>
+            <label><input type="checkbox" name="svc" value="Call centre" data-k="callcentre">Call centre</label>
+            <label><input type="checkbox" name="svc" value="Bulk SMS" data-k="sms">Bulk SMS</label>
+            <label><input type="checkbox" name="svc" value="Billing system" data-k="billing">Billing system</label>
+            <label><input type="checkbox" name="svc" value="E-commerce" data-k="commerce">E-commerce</label>
+          </div>
+          <div class="fg" style="margin-top:22px">
+            <div><label for="fCountry">Country <em>*</em></label><select id="fCountry"><option>Kenya</option><option>Uganda</option><option>Tanzania</option></select></div>
+            <div class="capf hide"><label for="fCap">Capacity (Mbps) <em>*</em></label><input id="fCap" type="number" min="50" placeholder="e.g. 200"></div>
+            <div class="capf hide full"><label for="fDel">Preferred delivery</label><select id="fDel"><option>Not sure, advise me</option><option>Fibre hand-off</option><option>Starlink satellite</option><option>Point-to-point transmission</option><option>Data centre cross-connect</option></select></div>
+            <div class="full"><label for="fSite">Site location, tower or site number <em>*</em></label><input id="fSite" placeholder="e.g. Westlands, Nairobi · BTS 014"></div>
+            <div class="full"><label for="fMore">Tell us more</label><textarea id="fMore" placeholder="Voice channels, agent seats, SMS volume, current provider…"></textarea></div>
+            <div><label for="fName">Your name <em>*</em></label><input id="fName" autocomplete="name"></div>
+            <div><label for="fCo">Company</label><input id="fCo" autocomplete="organization"></div>
+            <div><label for="fEmail">Email <em>*</em></label><input id="fEmail" type="email" autocomplete="email"></div>
+            <div><label for="fPhone">Mobile number <em>*</em></label><input id="fPhone" type="tel" autocomplete="tel" placeholder="+254 …"></div>
+          </div>
+          <div class="f-acts"><button class="btn btn-p" type="submit">Send my request {I('arrow')}</button><a class="btn btn-o" href="https://wa.me/254799611864" target="_blank" rel="noopener">WhatsApp us instead</a></div>
+          <p class="fine">Your request opens in your email app, addressed to the right country team. We use your details only to respond.</p>
+        </div>
+        <div class="done" id="done">
+          <h4>Your request is ready</h4>
+          <p style="color:var(--muted);margin-top:6px">Send it to <b id="toMail">kenya@endwaveafrica.com</b>. We reply within one business day.</p>
+          <pre id="summary"></pre>
+          <div class="f-acts" style="margin-top:0"><a class="btn btn-p" id="mailBtn" href="#">Open in email {I('arrow')}</a><button class="btn btn-o" type="button" id="copyBtn">Copy request</button><button class="btn btn-o" type="button" id="editBtn">Edit</button></div>
+        </div>
+      </form>
+    </div>
+    <aside class="side">
+      <div class="sc">
+        <h5>What happens next</h5>
+        <ol class="steps-v" style="margin-top:16px">
+          <li><span>01</span><div><b>We reply</b><p>Within one working day, with any questions we need answered.</p></div></li>
+          <li><span>02</span><div><b>Scoping &amp; feasibility</b><p>Routes, sites, numbers or integrations confirmed.</p></div></li>
+          <li><span>03</span><div><b>One quotation</b><p>Every service you asked for, on a single quote.</p></div></li>
+          <li><span>04</span><div><b>Setup &amp; go live</b><p>You pay once setup is agreed, never before.</p></div></li>
+        </ol>
+      </div>
+      <div class="sc tint">
+        <h5>Prefer to talk?</h5>
+        <p>Phone, email and WhatsApp all reach the same team.</p>
+        <div class="f-acts" style="margin-top:0;gap:8px"><a class="btn btn-o btn-sm" href="tel:+254799611864">Call</a><a class="btn btn-o btn-sm" href="https://wa.me/254799611864" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-o btn-sm" href="mailto:kenya@endwaveafrica.com">Email</a></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec soft" id="demo">
+  <div class="wrap cgrid">
+    <div>
+      <span class="eyebrow line">Endwave Billing · demo &amp; quote</span>
+      <h2 style="font-size:clamp(32px,4vw,46px)">Free demo. No obligation.</h2>
+      <p class="lead" style="font-size:16.5px">Give us a rough picture of your network and we'll walk you through a working demo, kept completely separate from live data, then come back with pricing and a migration plan.</p>
+      <form class="form f" id="demoForm" novalidate>
+        <div class="fg">
+          <div><label for="dName">Your name <em>*</em></label><input id="dName" autocomplete="name"></div>
+          <div><label for="dCo">Company / ISP name <em>*</em></label><input id="dCo" autocomplete="organization"></div>
+          <div><label for="dEmail">Email <em>*</em></label><input id="dEmail" type="email" autocomplete="email"></div>
+          <div><label for="dPhone">Phone <em>*</em></label><input id="dPhone" type="tel" placeholder="+254 …" autocomplete="tel"></div>
+          <div><label for="dSubs">Approximate subscribers</label><select id="dSubs"><option>Under 100</option><option>100 – 500</option><option>500 – 2,000</option><option>2,000 – 10,000</option><option>Over 10,000</option></select></div>
+          <div><label for="dRouters">Number of gateways / routers</label><input id="dRouters" placeholder="e.g. 2 MikroTik"></div>
+          <div class="full"><label for="dType">Type of service</label><select id="dType"><option>PPPoE</option><option>Hotspot</option><option>PPPoE &amp; hotspot</option><option>Static / business</option></select></div>
+          <div class="full"><label for="dCur">Current billing platform (if any)</label><input id="dCur" placeholder="We'll handle the migration"></div>
+          <div class="full"><label for="dMore">Anything else we should know?</label><textarea id="dMore"></textarea></div>
+        </div>
+        <div class="f-acts"><button class="btn btn-p" type="submit">Request my demo {I('arrow')}</button><a class="btn btn-o" href="{BILLING}" target="_blank" rel="noopener">Open the live demo</a></div>
+        <p class="fine" id="demoMsg">Your request opens in your email app. We use your details only to respond.</p>
+      </form>
+    </div>
+    <aside class="side">
+      <div class="sc" style="--c:#2980C3">
+        <h5>Log in to our platforms</h5>
+        <p>Already a customer, or want to look around first?</p>
+        <div class="plats">
+          <a href="{BILLING}" target="_blank" rel="noopener"><span class="ic" style="--c:#2980C3">{I('bill')}</span>Endwave Billing<small>demo</small></a>
+          <a href="{PPPOE}" target="_blank" rel="noopener"><span class="ic" style="--c:#6F6BE8">{I('net')}</span>PPPoE Manager<small>demo</small></a>
+          <a href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#15B0E3">{I('gauge')}</span>Wholesale Operations<small>portal</small></a>
+          <a href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#14A894">{I('head')}</span>Call Centre<small>admin</small></a>
+        </div>
+      </div>
+      <div class="sc" style="--c:#15B0E3"><h5>Capacity quotes</h5><p>Send the site location, the capacity and the term. Rates start at KES 160 per Mbps for 1 Gbps and above.</p><a class="link" href="capacity.html#pricing">Size your link {I('arrow')}</a></div>
+      <div class="sc" style="--c:#E59A1C"><h5>Peering &amp; colocation</h5><p>BGP sessions on AS329846, IP transit and cross-connects in five data centres.</p><a class="link" href="capacity.html#datacentres">See data centres {I('arrow')}</a></div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap" style="max-width:900px">
+    <div class="head c reveal">
+      <span class="eyebrow"><span class="n">?</span> FAQ</span>
+      <h2>Before you request.</h2>
+    </div>
+    <div class="qa" id="qa"></div>
+  </div>
+</section>
