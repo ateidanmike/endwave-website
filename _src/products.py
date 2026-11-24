@@ -10,7 +10,7 @@ ARROW = I("arrow")
 PRODUCTS = {
 # ------------------------------------------------------------------ SMS
 "sms": dict(
-  file="sms.html", name="Bulk SMS", icon="sms", color="#FFA126", svc="sms",
+  file="sms.html", name="Bulk SMS", icon="sms", color="#F86000", svc="sms",
   title="Bulk SMS — Endwave",
   desc="Bulk SMS for Kenya, Uganda and Tanzania: registered sender IDs, a web portal, scheduling, delivery reports and a REST API for reminders, OTPs and alerts.",
   eyebrow="Bulk SMS",
@@ -133,7 +133,7 @@ PRODUCTS = {
 <div class="rows" style="margin-top:12px">
 <div class="row"><span class="agent"><span class="av" style="--c:#2557B8">W</span>Wanjiru K.</span><span class="m">Sales</span><span class="r b-ok">ON CALL</span></div>
 <div class="row"><span class="agent"><span class="av" style="--c:#1D4F9C">B</span>Brian O.</span><span class="m">Support</span><span class="r b-blue">AVAILABLE</span></div>
-<div class="row"><span class="agent"><span class="av" style="--c:#FFA126">A</span>Aisha N.</span><span class="m">Billing</span><span class="r b-due">WRAP-UP</span></div></div></div></div>''',
+<div class="row"><span class="agent"><span class="av" style="--c:#F86000">A</span>Aisha N.</span><span class="m">Billing</span><span class="r b-due">WRAP-UP</span></div></div></div></div>''',
   feat_h="Built for teams that answer customers all day.",
   features=[
     ("IVR menus", "Greet callers and route them to the right team with press-1 menus, business hours and holiday rules."),
@@ -173,7 +173,7 @@ PRODUCTS = {
 ),
 # ------------------------------------------------------------------ E-COMMERCE
 "ecommerce": dict(
-  file="ecommerce.html", name="Integrated e-commerce", icon="cart", color="#E04E00", svc="commerce",
+  file="ecommerce.html", name="Integrated e-commerce", icon="cart", color="#F86000", svc="commerce",
   title="Integrated E-commerce — Endwave",
   desc="Online stores with M-Pesa, Airtel Money and card checkout, inventory and order tracking, and SMS order updates, connected to Endwave billing.",
   eyebrow="Integrated e-commerce",

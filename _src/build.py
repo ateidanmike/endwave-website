@@ -62,16 +62,16 @@ def nav(active):
         <h6>Platforms you can log in to</h6>
         <div class="grid">
           <a class="di" href="{BILLING}" target="_blank" rel="noopener"><span class="ic" style="--c:#1D4F9C;background:#1D4F9C">{I('bill')}</span><span><b>Endwave Billing <span class="tag-live">LIVE</span></b><small>ISP billing, M-Pesa collections &amp; CRM</small></span></a>
-          <a class="di" href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#F86A00;background:#F86A00">{I('gauge')}</span><span><b>Wholesale Operations <span class="tag-live">LIVE</span></b><small>Capacity orders, links &amp; utilisation</small></span></a>
+          <a class="di" href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#F86000;background:#F86000">{I('gauge')}</span><span><b>Wholesale Operations <span class="tag-live">LIVE</span></b><small>Capacity orders, links &amp; utilisation</small></span></a>
           <a class="di" href="{PPPOE}" target="_blank" rel="noopener"><span class="ic" style="--c:#5C7CCF;background:#5C7CCF">{I('net')}</span><span><b>PPPoE Manager</b><small>Subscriber sessions, plans &amp; routers</small></span></a>
           <a class="di" href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#2557B8;background:#2557B8">{I('head')}</span><span><b>Call Centre login <span class="tag-live">LIVE</span></b><small>Agent &amp; supervisor console</small></span></a>
         </div>
         <h6>Communications &amp; commerce</h6>
         <div class="grid">
-          <a class="di" href="sms.html"><span class="ic" style="--c:#FFA126;background:#FFA126">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
+          <a class="di" href="sms.html"><span class="ic" style="--c:#F86000;background:#F86000">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
           <a class="di" href="voice.html"><span class="ic" style="--c:#3E86F5;background:#3E86F5">{I('phone')}</span><span><b>VoIP, MMS &amp; voice</b><small>SIP trunks, hosted PBX &amp; numbers</small></span></a>
           <a class="di" href="callcentre.html"><span class="ic" style="--c:#2557B8;background:#2557B8">{I('head')}</span><span><b>Call Centre</b><small>IVR, queues, recording &amp; dashboards</small></span></a>
-          <a class="di" href="ecommerce.html"><span class="ic" style="--c:#E04E00;background:#E04E00">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
+          <a class="di" href="ecommerce.html"><span class="ic" style="--c:#F86000;background:#F86000">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
         </div>
       </div></li>
     <li class="dd"><button type="button" aria-expanded="false">Services {I('chev','chev')}</button>
