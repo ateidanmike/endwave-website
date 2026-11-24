@@ -34,7 +34,7 @@ const watch = () => $$('.reveal:not(.in)').forEach(el => io.observe(el));
 /* ---------- hero orbit ---------- */
 const orbit = $('#orbit');
 if (orbit) {
-  const nodes = [['Capacity', 'globe', 50, 4, '#15B0E3'], ['Billing', 'bill', 90, 28, '#2980C3'], ['Call centres', 'head', 88, 74, '#14A894'], ['Bulk SMS', 'sms', 50, 96, '#E59A1C'], ['VoIP & voice', 'phone', 12, 74, '#1DB974'], ['E-commerce', 'cart', 10, 28, '#E0533D'], ['PPPoE', 'net', 73, 50, '#6F6BE8'], ['Colocation', 'server', 27, 50, '#3B7BD8']];
+  const nodes = [['Capacity', 'globe', 50, 4, '#F86A00'], ['Billing', 'bill', 90, 28, '#1D4F9C'], ['Call centres', 'head', 88, 74, '#2557B8'], ['Bulk SMS', 'sms', 50, 96, '#FFA126'], ['VoIP & voice', 'phone', 12, 74, '#3E86F5'], ['E-commerce', 'cart', 10, 28, '#E04E00'], ['PPPoE', 'net', 73, 50, '#5C7CCF'], ['Colocation', 'server', 27, 50, '#8FA3C8']];
   const svg = $('#orbitLines');
   nodes.forEach(([l, ic, x, y, c], i) => {
     svg.insertAdjacentHTML('beforeend', `<line x1="50" y1="50" x2="${x}" y2="${y}" vector-effect="non-scaling-stroke"/><line class="p" x1="${x}" y1="${y}" x2="50" y2="50" vector-effect="non-scaling-stroke" style="animation-delay:${i * .45}s"/>`);
@@ -70,10 +70,10 @@ $$('#netmap').forEach(svg => {
   svg.setAttribute('viewBox', `0 0 ${GEO.W} ${GEO.H}`);
   const P = i => cities[i];
   const lbl = (t, la, lo, c, sz = 13) => { const [x, y] = pj(la, lo); return `<text class="cl" data-c="${c}" x="${x}" y="${y}" text-anchor="middle" font-size="${sz}" font-weight="800" fill="#5C7DB0" letter-spacing="4">${t}</text>`; };
-  let h = `<rect width="${GEO.W}" height="${GEO.H}" fill="#030B18"/>`;
+  let h = `<rect width="${GEO.W}" height="${GEO.H}" fill="#020C22"/>`;
   h += `<g fill="none" stroke="rgba(140,170,230,.05)">${Array.from({ length: 16 }, (_, i) => `<path d="M0 ${i * 40} H${GEO.W}"/>`).join('')}${Array.from({ length: 12 }, (_, i) => `<path d="M${i * 40} 0 V${GEO.H}"/>`).join('')}</g>`;
-  h += `<g fill="#0A1529" stroke="rgba(140,170,230,.14)" stroke-width=".8" stroke-linejoin="round">${GEO.others.map(d => `<path d="${d}"/>`).join('')}</g>`;
-  h += `<g stroke-linejoin="round">${Object.entries(GEO.countries).map(([c, d]) => `<path class="cty" data-c="${c}" d="${d}" fill="#12305E" stroke="rgba(95,208,245,.55)" stroke-width="1.2"/>`).join('')}</g>`;
+  h += `<g fill="#081A3B" stroke="rgba(140,170,230,.14)" stroke-width=".8" stroke-linejoin="round">${GEO.others.map(d => `<path d="${d}"/>`).join('')}</g>`;
+  h += `<g stroke-linejoin="round">${Object.entries(GEO.countries).map(([c, d]) => `<path class="cty" data-c="${c}" d="${d}" fill="#12305E" stroke="rgba(255,159,69,.55)" stroke-width="1.2"/>`).join('')}</g>`;
   h += `<g fill="#1C5A9E" fill-opacity=".8" stroke="none">${GEO.lakes.map(d => `<path d="${d}"/>`).join('')}</g>`;
   h += lbl('UGANDA', 3.45, 33.25, 'ug', 11) + lbl('KENYA', 1.6, 38.6, 'ke', 15) + lbl('TANZANIA', -9.9, 36.3, 'tz', 15);
   const [vx, vy] = pj(-1.0, 32.9); h += `<text class="mo" x="${vx}" y="${vy}" text-anchor="middle" font-size="7.5" fill="#9CD6F2" letter-spacing="1">L. VICTORIA</text>`;
@@ -81,13 +81,13 @@ $$('#netmap').forEach(svg => {
   const sub = (i, dy) => `<path d="M${P(i)[1]} ${P(i)[2]} L${GEO.W} ${P(i)[2] + dy}" stroke="#3FD493" stroke-opacity=".6" stroke-width="1.6" class="route" fill="none"/>`;
   h += sub(5, -30) + sub(9, 10);
   h += `<text class="mo" x="${GEO.W - 52}" y="${P(5)[2] - 34}" font-size="8" fill="#3FD493" opacity=".85">SUBSEA</text>`;
-  h += links.map(([a, b]) => `<path d="M${P(a)[1]} ${P(a)[2]} L${P(b)[1]} ${P(b)[2]}" stroke="rgba(95,208,245,.3)" stroke-width="1.4" fill="none"/>`).join('');
-  h += links.filter((_, i) => i % 2 === 0).map(([a, b], i) => `<path d="M${P(a)[1]} ${P(a)[2]} L${P(b)[1]} ${P(b)[2]}" stroke="#5FD0F5" stroke-width="2" fill="none" class="route" style="animation-duration:${10 + i * 2}s"/>`).join('');
+  h += links.map(([a, b]) => `<path d="M${P(a)[1]} ${P(a)[2]} L${P(b)[1]} ${P(b)[2]}" stroke="rgba(255,159,69,.3)" stroke-width="1.4" fill="none"/>`).join('');
+  h += links.filter((_, i) => i % 2 === 0).map(([a, b], i) => `<path d="M${P(a)[1]} ${P(a)[2]} L${P(b)[1]} ${P(b)[2]}" stroke="#FF9F45" stroke-width="2" fill="none" class="route" style="animation-duration:${10 + i * 2}s"/>`).join('');
   h += cities.map(([n, x, y, c, t, dx, dy]) => {
-    const col = t === 'core' ? '#15B0E3' : t === 'land' ? '#3FD493' : '#8D9AB8';
+    const col = t === 'core' ? '#F86A00' : t === 'land' ? '#3FD493' : '#8D9AB8';
     const r = t === 'm' ? 4.5 : 6.5;
     const pulse = t !== 'm' ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" class="pulse-dot"/>` : '';
-    return `<g class="city" data-c="${c}">${pulse}<circle cx="${x}" cy="${y}" r="${r + 4}" fill="${col}" opacity=".14"/><circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="#040914" stroke-width="2"/><text x="${x + dx}" y="${y + dy}" font-size="11.5" font-weight="${t === 'm' ? 600 : 700}" fill="${t === 'm' ? '#A9B6D2' : '#fff'}" paint-order="stroke" stroke="#030B18" stroke-width="3">${n}</text></g>`;
+    return `<g class="city" data-c="${c}">${pulse}<circle cx="${x}" cy="${y}" r="${r + 4}" fill="${col}" opacity=".14"/><circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="#04112B" stroke-width="2"/><text x="${x + dx}" y="${y + dy}" font-size="11.5" font-weight="${t === 'm' ? 600 : 700}" fill="${t === 'm' ? '#A9B6D2' : '#fff'}" paint-order="stroke" stroke="#020C22" stroke-width="3">${n}</text></g>`;
   }).join('');
   svg.innerHTML = h;
 });
@@ -103,8 +103,8 @@ if ($('#covKv')) {
     $('#covKv').innerHTML = cov[c].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
     $$('#covTabs button').forEach(b => b.classList.toggle('on', b.dataset.c === c));
     $$('#netmap .city').forEach(g => g.style.opacity = g.dataset.c === c ? 1 : .35);
-    $$('#netmap .cl').forEach(t => t.setAttribute('fill', t.dataset.c === c ? '#5FD0F5' : '#5C7DB0'));
-    $$('#netmap .cty').forEach(p => { const on = p.dataset.c === c; p.setAttribute('fill', on ? '#17407A' : '#0E2347'); p.setAttribute('stroke', on ? '#5FD0F5' : 'rgba(95,208,245,.35)'); p.setAttribute('stroke-width', on ? 1.8 : 1); });
+    $$('#netmap .cl').forEach(t => t.setAttribute('fill', t.dataset.c === c ? '#FF9F45' : '#5C7DB0'));
+    $$('#netmap .cty').forEach(p => { const on = p.dataset.c === c; p.setAttribute('fill', on ? '#17407A' : '#0E2347'); p.setAttribute('stroke', on ? '#FF9F45' : 'rgba(255,159,69,.35)'); p.setAttribute('stroke-width', on ? 1.8 : 1); });
   };
   $$('#covTabs button').forEach(b => b.addEventListener('click', () => setCov(b.dataset.c)));
   setCov('ke');

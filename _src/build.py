@@ -54,24 +54,24 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 def nav(active):
     def on(p): return ' class="on"' if p == active else ""
     return f"""<header class="nav" id="nav"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Endwave home"><img src="assets/endwave-logo-light.png" alt="Endwave NextGen Worldwide" width="202" height="34"></a>
+  <a class="brand" href="index.html" aria-label="Endwave home"><img src="assets/endwave-logo-light.png" alt="Endwave NextGen Worldwide" width="202" height="42"></a>
   <ul class="menu" id="menu">
     <li><a href="index.html"{on('home')}>Home</a></li>
     <li class="dd"><button type="button" aria-expanded="false">Products {I('chev','chev')}</button>
       <div class="drop mega">
         <h6>Platforms you can log in to</h6>
         <div class="grid">
-          <a class="di" href="{BILLING}" target="_blank" rel="noopener"><span class="ic" style="--c:#2980C3;background:#2980C3">{I('bill')}</span><span><b>Endwave Billing <span class="tag-live">LIVE</span></b><small>ISP billing, M-Pesa collections &amp; CRM</small></span></a>
-          <a class="di" href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#15B0E3;background:#15B0E3">{I('gauge')}</span><span><b>Wholesale Operations <span class="tag-live">LIVE</span></b><small>Capacity orders, links &amp; utilisation</small></span></a>
-          <a class="di" href="{PPPOE}" target="_blank" rel="noopener"><span class="ic" style="--c:#6F6BE8;background:#6F6BE8">{I('net')}</span><span><b>PPPoE Manager</b><small>Subscriber sessions, plans &amp; routers</small></span></a>
-          <a class="di" href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#14A894;background:#14A894">{I('head')}</span><span><b>Call Centre login <span class="tag-live">LIVE</span></b><small>Agent &amp; supervisor console</small></span></a>
+          <a class="di" href="{BILLING}" target="_blank" rel="noopener"><span class="ic" style="--c:#1D4F9C;background:#1D4F9C">{I('bill')}</span><span><b>Endwave Billing <span class="tag-live">LIVE</span></b><small>ISP billing, M-Pesa collections &amp; CRM</small></span></a>
+          <a class="di" href="{CAPACITY}" target="_blank" rel="noopener"><span class="ic" style="--c:#F86A00;background:#F86A00">{I('gauge')}</span><span><b>Wholesale Operations <span class="tag-live">LIVE</span></b><small>Capacity orders, links &amp; utilisation</small></span></a>
+          <a class="di" href="{PPPOE}" target="_blank" rel="noopener"><span class="ic" style="--c:#5C7CCF;background:#5C7CCF">{I('net')}</span><span><b>PPPoE Manager</b><small>Subscriber sessions, plans &amp; routers</small></span></a>
+          <a class="di" href="{CALLC}" target="_blank" rel="noopener"><span class="ic" style="--c:#2557B8;background:#2557B8">{I('head')}</span><span><b>Call Centre login <span class="tag-live">LIVE</span></b><small>Agent &amp; supervisor console</small></span></a>
         </div>
         <h6>Communications &amp; commerce</h6>
         <div class="grid">
-          <a class="di" href="sms.html"><span class="ic" style="--c:#E59A1C;background:#E59A1C">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
-          <a class="di" href="voice.html"><span class="ic" style="--c:#1DB974;background:#1DB974">{I('phone')}</span><span><b>VoIP, MMS &amp; voice</b><small>SIP trunks, hosted PBX &amp; numbers</small></span></a>
-          <a class="di" href="callcentre.html"><span class="ic" style="--c:#14A894;background:#14A894">{I('head')}</span><span><b>Call Centre</b><small>IVR, queues, recording &amp; dashboards</small></span></a>
-          <a class="di" href="ecommerce.html"><span class="ic" style="--c:#E0533D;background:#E0533D">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
+          <a class="di" href="sms.html"><span class="ic" style="--c:#FFA126;background:#FFA126">{I('sms')}</span><span><b>Bulk SMS</b><small>Sender IDs, portal &amp; REST API</small></span></a>
+          <a class="di" href="voice.html"><span class="ic" style="--c:#3E86F5;background:#3E86F5">{I('phone')}</span><span><b>VoIP, MMS &amp; voice</b><small>SIP trunks, hosted PBX &amp; numbers</small></span></a>
+          <a class="di" href="callcentre.html"><span class="ic" style="--c:#2557B8;background:#2557B8">{I('head')}</span><span><b>Call Centre</b><small>IVR, queues, recording &amp; dashboards</small></span></a>
+          <a class="di" href="ecommerce.html"><span class="ic" style="--c:#E04E00;background:#E04E00">{I('cart')}</span><span><b>Integrated e-commerce</b><small>Storefronts with mobile money &amp; cards</small></span></a>
         </div>
       </div></li>
     <li class="dd"><button type="button" aria-expanded="false">Services {I('chev','chev')}</button>
@@ -91,7 +91,7 @@ def nav(active):
 
 FOOTER = f"""<footer><div class="wrap">
   <div class="f-top">
-    <div class="f-brand"><img src="assets/endwave-logo-light.png" alt="Endwave NextGen Worldwide" width="260" height="44">
+    <div class="f-brand"><img src="assets/endwave-logo-light.png" alt="Endwave NextGen Worldwide" width="270" height="56">
       <p>Capacity, voice, call centres, bulk SMS, billing and e-commerce for operators and businesses across Kenya, Uganda and Tanzania.</p>
       <q>Six services. One network for Africa.</q></div>
     <div><h6>Platforms</h6><ul>
@@ -167,7 +167,7 @@ def page(title, desc, active, body, fn="index.html"):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 {BASE404 if active == "404" else ""}<title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#040914">
+<meta name="theme-color" content="#04112B">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
@@ -180,7 +180,7 @@ def page(title, desc, active, body, fn="index.html"):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITE}/assets/og-image.png">
-{head_extra(fn, active)}<link rel="icon" href="assets/endwave-mark.png">
+{head_extra(fn, active)}<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">

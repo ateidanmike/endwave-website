@@ -10,7 +10,7 @@ ARROW = I("arrow")
 PRODUCTS = {
 # ------------------------------------------------------------------ SMS
 "sms": dict(
-  file="sms.html", name="Bulk SMS", icon="sms", color="#E59A1C", svc="sms",
+  file="sms.html", name="Bulk SMS", icon="sms", color="#FFA126", svc="sms",
   title="Bulk SMS — Endwave",
   desc="Bulk SMS for Kenya, Uganda and Tanzania: registered sender IDs, a web portal, scheduling, delivery reports and a REST API for reminders, OTPs and alerts.",
   eyebrow="Bulk SMS",
@@ -67,7 +67,7 @@ PRODUCTS = {
 ),
 # ------------------------------------------------------------------ VOICE
 "voice": dict(
-  file="voice.html", name="VoIP, MMS & voice", icon="phone", color="#1DB974", svc="voice",
+  file="voice.html", name="VoIP, MMS & voice", icon="phone", color="#3E86F5", svc="voice",
   title="VoIP, SIP Trunks & Hosted PBX — Endwave",
   desc="Business voice on the Endwave network: SIP trunks, hosted PBX, local numbers and number porting in Kenya, Uganda and Tanzania, with HD voice, voicemail and MMS.",
   eyebrow="VoIP, MMS & voice",
@@ -120,7 +120,7 @@ PRODUCTS = {
 ),
 # ------------------------------------------------------------------ CALL CENTRE
 "callcentre": dict(
-  file="callcentre.html", name="Call Centre", icon="head", color="#14A894", svc="callcentre",
+  file="callcentre.html", name="Call Centre", icon="head", color="#2557B8", svc="callcentre",
   title="Cloud Call Centre — Endwave",
   desc="A full contact centre in a browser tab: IVR, inbound and outbound queues, call recording and live supervisor dashboards. Seats and headsets set up on site in Kenya, Uganda and Tanzania.",
   eyebrow="Call Centre",
@@ -131,9 +131,9 @@ PRODUCTS = {
   mock='''<div class="win"><div class="win-b"><i></i><i></i><i></i><span>callcenter.endwaveafrica.com</span></div><div class="win-c">
 <div class="kpis"><div class="kpi"><small>In queue</small><b id="cq">2</b></div><div class="kpi"><small>Avg wait</small><b id="cw">0:18</b></div><div class="kpi"><small>Answered</small><b>412</b></div></div>
 <div class="rows" style="margin-top:12px">
-<div class="row"><span class="agent"><span class="av" style="--c:#14A894">W</span>Wanjiru K.</span><span class="m">Sales</span><span class="r b-ok">ON CALL</span></div>
-<div class="row"><span class="agent"><span class="av" style="--c:#2980C3">B</span>Brian O.</span><span class="m">Support</span><span class="r b-blue">AVAILABLE</span></div>
-<div class="row"><span class="agent"><span class="av" style="--c:#E59A1C">A</span>Aisha N.</span><span class="m">Billing</span><span class="r b-due">WRAP-UP</span></div></div></div></div>''',
+<div class="row"><span class="agent"><span class="av" style="--c:#2557B8">W</span>Wanjiru K.</span><span class="m">Sales</span><span class="r b-ok">ON CALL</span></div>
+<div class="row"><span class="agent"><span class="av" style="--c:#1D4F9C">B</span>Brian O.</span><span class="m">Support</span><span class="r b-blue">AVAILABLE</span></div>
+<div class="row"><span class="agent"><span class="av" style="--c:#FFA126">A</span>Aisha N.</span><span class="m">Billing</span><span class="r b-due">WRAP-UP</span></div></div></div></div>''',
   feat_h="Built for teams that answer customers all day.",
   features=[
     ("IVR menus", "Greet callers and route them to the right team with press-1 menus, business hours and holiday rules."),
@@ -173,7 +173,7 @@ PRODUCTS = {
 ),
 # ------------------------------------------------------------------ E-COMMERCE
 "ecommerce": dict(
-  file="ecommerce.html", name="Integrated e-commerce", icon="cart", color="#E0533D", svc="commerce",
+  file="ecommerce.html", name="Integrated e-commerce", icon="cart", color="#E04E00", svc="commerce",
   title="Integrated E-commerce — Endwave",
   desc="Online stores with M-Pesa, Airtel Money and card checkout, inventory and order tracking, and SMS order updates, connected to Endwave billing.",
   eyebrow="Integrated e-commerce",
