@@ -688,3 +688,10 @@ a.node.live i::after{content:"";position:absolute;top:-4px;right:-4px;width:12px
 @media (max-width:1080px){.upbox{grid-template-columns:1fr;padding:32px}}
 @media (max-width:560px){.ups{grid-template-columns:1fr}.upbox{padding:24px}}
 section[id],[id].pc{scroll-margin-top:84px}
+
+/* coming-soon pricing */
+.soon-tag{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:rgba(248,96,0,.14);color:#F86000;text-transform:uppercase}
+.ctabs.lt button.on .soon-tag{background:#F86000;color:#fff}
+.calc.soon .total b{font-size:38px}
+.calc.soon .band b{color:var(--muted)}
+.calc.soon .total em,.calc.soon .total span,.calc.soon .band b em{display:none}

@@ -104,7 +104,7 @@ $$('#netmap').forEach(svg => {
 const cov = {
   ke: [['Key cities', 'Nairobi · Mombasa · Kisumu'], ['Billing currency', 'KES or USD'], ['Data centres', 'ADC Kenya · iColo NBO1 · iColo NBO2'], ['Delivery', 'Fibre, Starlink or point-to-point'], ['Capacity', '50 Mbps – 100 Gbps']],
   ug: [['Key cities', 'Kampala · Gulu · Mbarara'], ['Billing currency', 'UGX or USD'], ['Data centres', 'Raxio Uganda'], ['Delivery', 'Fibre, Starlink or point-to-point'], ['Capacity', '50 Mbps – 100 Gbps']],
-  tz: [['Key cities', 'Dar es Salaam · Arusha · Mwanza · Dodoma'], ['Billing currency', 'TZS or USD'], ['Data centres', 'Raxio Tanzania'], ['Delivery', 'Fibre, Starlink or point-to-point'], ['Capacity', '50 Mbps – 100 Gbps']]
+  tz: [['Key cities', 'Dar es Salaam · Arusha · Mwanza · Dodoma'], ['Capacity pricing', 'Coming soon'], ['Billing currency', 'TZS or USD'], ['Data centres', 'Raxio Tanzania'], ['Delivery', 'Fibre, Starlink or point-to-point'], ['Capacity', '50 Mbps – 100 Gbps']]
 };
 if ($('#covKv')) {
   const setCov = c => {
@@ -129,8 +129,8 @@ if ($('#slider')) {
   const bands = [['Starter', 50, 199, '50 – 199 Mbps', 100], ['Growth', 200, 500, '200 – 500 Mbps', 300], ['Pro', 501, 999, '501 – 999 Mbps', 700], ['Carrier', 1000, 100000, '1 Gbps and above', 2000]];
   const cur = {
     Kenya: { code: 'KES', rates: [190, 180, 170, 160], activation: 11600 },
-    Uganda: { code: 'UGX', rates: [5200, 4950, 4700, 4400], activation: 320000 },
-    Tanzania: { code: 'TZS', rates: [3600, 3420, 3230, 3040], activation: 220000 }
+    Uganda: { code: 'UGX', rates: [12600, 11500, 11500, 9600], activation: 320000 },
+    Tanzania: { code: 'TZS', soon: true }
   };
   const stops = [50, 100, 200, 500, 1000, 10000, 100000];
   let mbps = 100, country = 'Kenya';
@@ -140,7 +140,22 @@ if ($('#slider')) {
   $('#bands').innerHTML = bands.map((b, i) => `<div class="band" data-i="${i}" role="button" tabindex="0"><h6>${b[0]}</h6><small>${b[3]}</small><b><span class="bc">KES</span> <span class="br">${cur.Kenya.rates[i]}</span> <em>/Mbps</em></b></div>`).join('');
   const render = fromInput => {
     mbps = Math.max(50, Math.min(100000, mbps));
-    const bi = bands.findIndex(b => mbps <= b[2]), i = bi < 0 ? bands.length - 1 : bi, b = bands[i], c = cur[country], rate = c.rates[i];
+    const bi = bands.findIndex(b => mbps <= b[2]), i = bi < 0 ? bands.length - 1 : bi, b = bands[i], c = cur[country];
+    $('#sideTitle').textContent = `${label(mbps)} · ${country}`;
+    const s0 = toSlider(mbps), sl0 = $('#slider'); if (!fromInput) sl0.value = s0; sl0.style.setProperty('--p', s0 / 6 + '%');
+    const u0 = +$('#unit').value; if (document.activeElement !== $('#mbps')) $('#mbps').value = +(mbps / u0).toFixed(u0 > 1 ? 1 : 0);
+    $('.calc').classList.toggle('soon', !!c.soon);
+    if (c.soon) {
+      $('#cur').textContent = ''; $('#total').textContent = 'Coming soon';
+      if ($('#actFee')) $('#actFee').textContent = 'KES 11,600 · UGX 320,000';
+      $$('.band').forEach((el, j) => { $('.bc', el).textContent = ''; $('.br', el).textContent = 'Soon'; el.classList.toggle('on', j === i); });
+      $('#note').innerHTML = `<b>${country} pricing is coming soon.</b> Register your interest and we'll send rates for your site as soon as they're published.`;
+      $('#reqCap').innerHTML = 'Register interest <svg class="i"><use href="#i-arrow"/></svg>';
+      $('#reqCap').href = `contact.html?svc=capacity&mbps=${mbps}&country=${country}#request`;
+      return;
+    }
+    $('#reqCap').innerHTML = 'Request this capacity <svg class="i"><use href="#i-arrow"/></svg>';
+    const rate = c.rates[i];
     $('#cur').textContent = c.code;
     if ($('#actFee')) $('#actFee').textContent = `${c.code} ${fmt(c.activation)}`;
     $$('.band').forEach((el, j) => { $('.bc', el).textContent = c.code; $('.br', el).textContent = fmt(c.rates[j]); el.classList.toggle('on', j === i); });
