@@ -128,8 +128,8 @@ if ($('#dcs')) {
 if ($('#slider')) {
   const bands = [['Starter', 50, 199, '50 – 199 Mbps', 100], ['Growth', 200, 500, '200 – 500 Mbps', 300], ['Pro', 501, 999, '501 – 999 Mbps', 700], ['Carrier', 1000, 100000, '1 Gbps and above', 2000]];
   const cur = {
-    Kenya: { code: 'KES', rates: [190, 180, 170, 160], activation: 11600 },
-    Uganda: { code: 'UGX', rates: [12600, 11500, 11500, 9600], activation: 320000 },
+    Kenya: { code: 'KES', rates: [190, 180, 170, 160], activation: 10000 },
+    Uganda: { code: 'UGX', rates: [12600, 11500, 11500, 9600], activation: 450000 },
     Tanzania: { code: 'TZS', soon: true }
   };
   const stops = [50, 100, 200, 500, 1000, 10000, 100000];
@@ -147,7 +147,7 @@ if ($('#slider')) {
     $('.calc').classList.toggle('soon', !!c.soon);
     if (c.soon) {
       $('#cur').textContent = ''; $('#total').textContent = 'Coming soon';
-      if ($('#actFee')) $('#actFee').textContent = 'KES 11,600 · UGX 320,000';
+      if ($('#actFee')) $('#actFee').textContent = 'KES 10,000 · UGX 450,000';
       $$('.band').forEach((el, j) => { $('.bc', el).textContent = ''; $('.br', el).textContent = 'Soon'; el.classList.toggle('on', j === i); });
       $('#note').innerHTML = `<b>${country} pricing is coming soon.</b> Register your interest and we'll send rates for your site as soon as they're published.`;
       $('#reqCap').innerHTML = 'Register interest <svg class="i"><use href="#i-arrow"/></svg>';
@@ -183,7 +183,7 @@ if ($('#qa')) {
     ['Can I buy just one service?', 'Yes. Every service can be taken on its own. Combining them simply means one account, one invoice and systems that are already connected.'],
     ['Who is wholesale capacity for?', 'ISPs, WISPs, fibre operators, carriers and ICT companies that resell bandwidth or run their own networks, plus enterprises that need dedicated, uncontended internet for their sites.'],
     ['Is the capacity shared or throttled?', 'Neither. The bandwidth you buy is dedicated to your network, backed by 99.9% guaranteed uptime and monitored 24/7 by our NOC, so it performs the same at peak hours as it does off-peak.'],
-    ['What do I need at my site before activation?', 'Active last-mile fibre pulled to your BTS location; a router that supports BGP or static routing with a free optical port (for example an SFP-enabled MikroTik); SFP modules, 1.25G 10 km (Huawei, Sopto or BIDI one-core); a splicing technician on standby once the site is confirmed; and power redundancy, strongly recommended. Activation is a one-time KES 11,600 port fee.'],
+    ['What do I need at my site before activation?', 'Active last-mile fibre pulled to your BTS location; a router that supports BGP or static routing with a free optical port (for example an SFP-enabled MikroTik); SFP modules, 1.25G 10 km (Huawei, Sopto or BIDI one-core); a splicing technician on standby once the site is confirmed; and power redundancy, strongly recommended. Activation is a one-time port fee of KES 10,000 in Kenya or UGX 450,000 in Uganda.'],
     ['Do you offer BGP, IP addresses and colocation?', 'Yes. We run our own network (AS329846) and support BGP sessions, IP transit and address allocation, with colocation and cross-connects in five carrier-neutral data centres.'],
     ['Can I try the billing system first?', 'Yes. The Endwave Billing demo, including PPPoE management, is open at demo.endwaveafrica.com, and we can set up a separate demo environment for your own network on request.'],
     ['Can I keep my existing phone numbers?', 'In most cases, yes. We port existing numbers onto our SIP trunks or hosted PBX and can add new local numbers in Kenya, Uganda and Tanzania.'],
