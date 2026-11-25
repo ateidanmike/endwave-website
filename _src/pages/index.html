@@ -12,16 +12,17 @@
       </div>
       <div class="chips">
         <span class="chip"><i class="dot"></i>Own ASN · AS329846</span>
+        <span class="chip"><i class="dot"></i>Multi-carrier upstream</span>
         <span class="chip"><i class="dot"></i>50 Mbps – 100 Gbps per link</span>
         <span class="chip"><i class="dot"></i>5 data centre presences</span>
         <span class="chip"><i class="dot"></i>Billed in KES, UGX &amp; TZS</span>
       </div>
     </div>
-    <div class="orbit" id="orbit" aria-hidden="true">
+    <nav class="orbit" id="orbit" aria-label="Endwave services">
       <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
       <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" id="orbitLines"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#F86000" stop-opacity="0"/><stop offset="1" stop-color="#F86000"/></linearGradient></defs></svg>
       <div class="core"><img src="assets/endwave-mark-light.png" alt=""></div>
-    </div>
+    </nav>
   </div>
 </section>
 
@@ -156,6 +157,7 @@
           <div class="pr"><small>Carrier</small><b>KES 160</b><em>1 Gbps +</em></div>
         </div>
         <ul class="ticks" style="margin-top:0">
+          <li>{I('check')}Multi-carrier upstream</li><li>{I('check')}Diverse subsea routes</li>
           <li>{I('check')}Fibre, Starlink or P2P</li><li>{I('check')}BGP &amp; IP transit</li>
           <li>{I('check')}99.9% uptime SLA</li><li>{I('check')}NOC watching 24/7</li>
         </ul>
@@ -190,14 +192,14 @@
     <div class="reveal">
       <span class="eyebrow"><span class="n">03</span> The network underneath</span>
       <h2>We run the network our services live on.</h2>
-      <p class="lead">We buy transit from international carriers over multiple routes, run it as one resilient network and hand dedicated capacity to the operators who serve homes, businesses and communities. Every platform on this page runs on that same network.</p>
+      <p class="lead">Our upstream comes from multiple international carriers over diverse subsea and terrestrial routes. We run it as one resilient network and hand dedicated capacity to the operators who serve homes, businesses and communities. Every platform on this page runs on that same network.</p>
       <div class="stats">
         <div class="stat"><b>AS329846</b><small>Our own autonomous system</small></div>
         <div class="stat"><b data-count="5">5</b><small>Carrier-neutral data centres</small></div>
         <div class="stat"><b data-count="3">3</b><small>Countries · KE, UG &amp; TZ</small></div>
         <div class="stat"><b>100 Gbps</b><small>Maximum per link</small></div>
       </div>
-      <div class="cta-row" style="margin-top:0"><a class="btn btn-w" href="capacity.html#coverage">See our network {I('arrow')}</a><a class="link" href="capacity.html#datacentres">Data centres &amp; colocation {I('arrow')}</a></div>
+      <div class="cta-row" style="margin-top:0"><a class="btn btn-w" href="capacity.html#coverage">See our network {I('arrow')}</a><a class="link" href="capacity.html#upstream">Our upstream {I('arrow')}</a></div>
     </div>
     <div class="map-card reveal">
       <svg viewBox="0 0 455 587" id="netmap" role="img" aria-label="Schematic of the Endwave network across Kenya, Uganda and Tanzania"></svg>
@@ -215,7 +217,7 @@
       <p class="lead">Most networks stitch together a bandwidth supplier, a voice carrier, an SMS gateway and a billing vendor. With Endwave it's one team and one agreement.</p>
     </div>
     <div class="svc reveal">
-      <div class="sv" style="--c:#F86000"><span class="ic">{I('globe')}</span><small>01</small><h4>Internet capacity</h4><p>Dedicated, uncontended bandwidth from 50 Mbps to 100 Gbps, with BGP, IP transit and colocation.</p><a class="link" href="capacity.html">Capacity &amp; pricing {I('arrow')}</a></div>
+      <div class="sv" style="--c:#F86000"><span class="ic">{I('globe')}</span><small>01</small><h4>Internet capacity</h4><p>Dedicated, uncontended bandwidth from 50 Mbps to 100 Gbps on multi-carrier upstream, with BGP, IP transit and colocation.</p><a class="link" href="capacity.html">Capacity &amp; pricing {I('arrow')}</a></div>
       <div class="sv" style="--c:#3E86F5"><span class="ic">{I('phone')}</span><small>02</small><h4>VoIP, MMS &amp; voice</h4><p>SIP trunks, hosted PBX, local numbers and MMS messaging, carried on the same network.</p><a class="link" href="voice.html">VoIP &amp; voice {I('arrow')}</a></div>
       <div class="sv" style="--c:#2557B8"><span class="ic">{I('head')}</span><small>03</small><h4>Call centres</h4><p>IVR, queues, recording and live dashboards, with seats and headsets set up on site.</p><a class="link" href="callcentre.html">Call centres {I('arrow')}</a></div>
       <div class="sv" style="--c:#F86000"><span class="ic">{I('sms')}</span><small>04</small><h4>Bulk SMS</h4><p>Registered sender IDs, scheduling, contact groups, delivery reports and a REST API.</p><a class="link" href="sms.html">Bulk SMS {I('arrow')}</a></div>

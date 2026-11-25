@@ -34,12 +34,20 @@ const watch = () => $$('.reveal:not(.in)').forEach(el => io.observe(el));
 /* ---------- hero orbit ---------- */
 const orbit = $('#orbit');
 if (orbit) {
-  const nodes = [['Capacity', 'globe', 50, 4, '#F86000'], ['Billing', 'bill', 90, 28, '#1D4F9C'], ['Call centres', 'head', 88, 74, '#2557B8'], ['Bulk SMS', 'sms', 50, 96, '#F86000'], ['VoIP & voice', 'phone', 12, 74, '#3E86F5'], ['E-commerce', 'cart', 10, 28, '#F86000'], ['PPPoE', 'net', 73, 50, '#5C7CCF'], ['Colocation', 'server', 27, 50, '#8FA3C8']];
+  const nodes = [
+    ['Capacity', 'globe', 50, 4, '#F86000', 'https://capacity.endwaveafrica.com/', 'live', 'Open the Wholesale capacity portal'],
+    ['Billing', 'bill', 90, 28, '#1D4F9C', 'https://demo.endwaveafrica.com/login', 'live', 'Try the billing system demo'],
+    ['Call centres', 'head', 88, 74, '#2557B8', 'https://callcenter.endwaveafrica.com/admin', 'live', 'Open the call centre'],
+    ['Bulk SMS', 'sms', 50, 96, '#F86000', 'sms.html#pricing', '', 'Bulk SMS pricing and contacts'],
+    ['VoIP & voice', 'phone', 12, 74, '#3E86F5', 'voice.html', '', 'VoIP services'],
+    ['E-commerce', 'cart', 10, 28, '#F86000', 'ecommerce.html', '', 'Integrated e-commerce'],
+    ['PPPoE', 'net', 73, 50, '#5C7CCF', 'https://demo.endwaveafrica.com/pppoe', 'live', 'Try the PPPoE manager demo'],
+    ['Colocation', 'server', 27, 50, '#8FA3C8', 'capacity.html#coverage', '', 'Map of our PoPs and data centres']];
   const svg = $('#orbitLines');
-  nodes.forEach(([l, ic, x, y, c], i) => {
+  nodes.forEach(([l, ic, x, y, c, href, live, tip], i) => {
     svg.insertAdjacentHTML('beforeend', `<line x1="50" y1="50" x2="${x}" y2="${y}" vector-effect="non-scaling-stroke"/><line class="p" x1="${x}" y1="${y}" x2="50" y2="50" vector-effect="non-scaling-stroke" style="animation-delay:${i * .45}s"/>`);
-    const small = i > 5;
-    orbit.insertAdjacentHTML('beforeend', `<div class="node" style="left:${x}%;top:${y}%;--c:${c};animation-delay:${i * .7}s">${y > 60 && !small ? '' : ''}<i style="${small ? 'width:44px;height:44px;border-radius:13px' : ''}">${ico(ic)}</i><span>${l}</span></div>`);
+    const small = i > 5, ext = /^https?:/.test(href);
+    orbit.insertAdjacentHTML('beforeend', `<a class="node${live ? ' live' : ''}" href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''} title="${tip}" aria-label="${l}: ${tip}" style="left:${x}%;top:${y}%;--c:${c};animation-delay:${i * .7}s"><i style="${small ? 'width:44px;height:44px;border-radius:13px' : ''}">${ico(ic)}</i><span>${l}</span></a>`);
   });
 }
 

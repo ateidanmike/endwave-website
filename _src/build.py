@@ -77,6 +77,7 @@ def nav(active):
     <li class="dd"><button type="button" aria-expanded="false">Services {I('chev','chev')}</button>
       <div class="drop list">
         <a class="di" href="capacity.html"><span><b>Wholesale internet capacity</b><small>Dedicated 50 Mbps – 100 Gbps, BGP &amp; IP transit</small></span></a>
+        <a class="di" href="capacity.html#upstream"><span><b>Upstream &amp; transit</b><small>Multi-carrier, diverse subsea routes, BGP failover</small></span></a>
         <a class="di" href="capacity.html#delivery"><span><b>Fibre, Starlink &amp; point-to-point</b><small>Three ways to land capacity at your site</small></span></a>
         <a class="di" href="capacity.html#datacentres"><span><b>Data centres &amp; colocation</b><small>Five carrier-neutral sites in KE, UG &amp; TZ</small></span></a>
         <a class="di" href="capacity.html#pricing"><span><b>Capacity pricing</b><small>Per-Mbps rates in KES, UGX &amp; TZS</small></span></a>

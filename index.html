@@ -25,7 +25,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11003a63">
+<link rel="stylesheet" href="styles.css?v=c51aaabb">
 </head>
 <body data-page="home">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -83,6 +83,7 @@
     <li class="dd"><button type="button" aria-expanded="false">Services <svg class="chev"><use href="#i-chev"/></svg></button>
       <div class="drop list">
         <a class="di" href="capacity.html"><span><b>Wholesale internet capacity</b><small>Dedicated 50 Mbps – 100 Gbps, BGP &amp; IP transit</small></span></a>
+        <a class="di" href="capacity.html#upstream"><span><b>Upstream &amp; transit</b><small>Multi-carrier, diverse subsea routes, BGP failover</small></span></a>
         <a class="di" href="capacity.html#delivery"><span><b>Fibre, Starlink &amp; point-to-point</b><small>Three ways to land capacity at your site</small></span></a>
         <a class="di" href="capacity.html#datacentres"><span><b>Data centres &amp; colocation</b><small>Five carrier-neutral sites in <span class="cm"><span title="Kenya"><svg aria-hidden="true"><use href="#i-map-ke"/></svg>KE</span><span title="Uganda"><svg aria-hidden="true"><use href="#i-map-ug"/></svg>UG</span><span title="Tanzania"><svg aria-hidden="true"><use href="#i-map-tz"/></svg>TZ</span></span></small></span></a>
         <a class="di" href="capacity.html#pricing"><span><b>Capacity pricing</b><small>Per-Mbps rates in KES, UGX &amp; TZS</small></span></a>
@@ -109,16 +110,17 @@
       </div>
       <div class="chips">
         <span class="chip"><i class="dot"></i>Own ASN · AS329846</span>
+        <span class="chip"><i class="dot"></i>Multi-carrier upstream</span>
         <span class="chip"><i class="dot"></i>50 Mbps – 100 Gbps per link</span>
         <span class="chip"><i class="dot"></i>5 data centre presences</span>
         <span class="chip"><i class="dot"></i>Billed in KES, UGX &amp; TZS</span>
       </div>
     </div>
-    <div class="orbit" id="orbit" aria-hidden="true">
+    <nav class="orbit" id="orbit" aria-label="Endwave services">
       <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
       <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" id="orbitLines"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#F86000" stop-opacity="0"/><stop offset="1" stop-color="#F86000"/></linearGradient></defs></svg>
       <div class="core"><img src="assets/endwave-mark-light.png" alt=""></div>
-    </div>
+    </nav>
   </div>
 </section>
 
@@ -253,6 +255,7 @@
           <div class="pr"><small>Carrier</small><b>KES 160</b><em>1 Gbps +</em></div>
         </div>
         <ul class="ticks" style="margin-top:0">
+          <li><svg class="i"><use href="#i-check"/></svg>Multi-carrier upstream</li><li><svg class="i"><use href="#i-check"/></svg>Diverse subsea routes</li>
           <li><svg class="i"><use href="#i-check"/></svg>Fibre, Starlink or P2P</li><li><svg class="i"><use href="#i-check"/></svg>BGP &amp; IP transit</li>
           <li><svg class="i"><use href="#i-check"/></svg>99.9% uptime SLA</li><li><svg class="i"><use href="#i-check"/></svg>NOC watching 24/7</li>
         </ul>
@@ -287,14 +290,14 @@
     <div class="reveal">
       <span class="eyebrow"><span class="n">03</span> The network underneath</span>
       <h2>We run the network our services live on.</h2>
-      <p class="lead">We buy transit from international carriers over multiple routes, run it as one resilient network and hand dedicated capacity to the operators who serve homes, businesses and communities. Every platform on this page runs on that same network.</p>
+      <p class="lead">Our upstream comes from multiple international carriers over diverse subsea and terrestrial routes. We run it as one resilient network and hand dedicated capacity to the operators who serve homes, businesses and communities. Every platform on this page runs on that same network.</p>
       <div class="stats">
         <div class="stat"><b>AS329846</b><small>Our own autonomous system</small></div>
         <div class="stat"><b data-count="5">5</b><small>Carrier-neutral data centres</small></div>
         <div class="stat"><b data-count="3">3</b><small>Countries <span class="cm"><span title="Kenya"><svg aria-hidden="true"><use href="#i-map-ke"/></svg>KE</span><span title="Uganda"><svg aria-hidden="true"><use href="#i-map-ug"/></svg>UG</span><span title="Tanzania"><svg aria-hidden="true"><use href="#i-map-tz"/></svg>TZ</span></span></small></div>
         <div class="stat"><b>100 Gbps</b><small>Maximum per link</small></div>
       </div>
-      <div class="cta-row" style="margin-top:0"><a class="btn btn-w" href="capacity.html#coverage">See our network <svg class="i"><use href="#i-arrow"/></svg></a><a class="link" href="capacity.html#datacentres">Data centres &amp; colocation <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <div class="cta-row" style="margin-top:0"><a class="btn btn-w" href="capacity.html#coverage">See our network <svg class="i"><use href="#i-arrow"/></svg></a><a class="link" href="capacity.html#upstream">Our upstream <svg class="i"><use href="#i-arrow"/></svg></a></div>
     </div>
     <div class="map-card reveal">
       <svg viewBox="0 0 455 587" id="netmap" role="img" aria-label="Schematic of the Endwave network across Kenya, Uganda and Tanzania"></svg>
@@ -312,7 +315,7 @@
       <p class="lead">Most networks stitch together a bandwidth supplier, a voice carrier, an SMS gateway and a billing vendor. With Endwave it's one team and one agreement.</p>
     </div>
     <div class="svc reveal">
-      <div class="sv" style="--c:#F86000"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><small>01</small><h4>Internet capacity</h4><p>Dedicated, uncontended bandwidth from 50 Mbps to 100 Gbps, with BGP, IP transit and colocation.</p><a class="link" href="capacity.html">Capacity &amp; pricing <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <div class="sv" style="--c:#F86000"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><small>01</small><h4>Internet capacity</h4><p>Dedicated, uncontended bandwidth from 50 Mbps to 100 Gbps on multi-carrier upstream, with BGP, IP transit and colocation.</p><a class="link" href="capacity.html">Capacity &amp; pricing <svg class="i"><use href="#i-arrow"/></svg></a></div>
       <div class="sv" style="--c:#3E86F5"><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><small>02</small><h4>VoIP, MMS &amp; voice</h4><p>SIP trunks, hosted PBX, local numbers and MMS messaging, carried on the same network.</p><a class="link" href="voice.html">VoIP &amp; voice <svg class="i"><use href="#i-arrow"/></svg></a></div>
       <div class="sv" style="--c:#2557B8"><span class="ic"><svg class="i"><use href="#i-head"/></svg></span><small>03</small><h4>Call centres</h4><p>IVR, queues, recording and live dashboards, with seats and headsets set up on site.</p><a class="link" href="callcentre.html">Call centres <svg class="i"><use href="#i-arrow"/></svg></a></div>
       <div class="sv" style="--c:#F86000"><span class="ic"><svg class="i"><use href="#i-sms"/></svg></span><small>04</small><h4>Bulk SMS</h4><p>Registered sender IDs, scheduling, contact groups, delivery reports and a REST API.</p><a class="link" href="sms.html">Bulk SMS <svg class="i"><use href="#i-arrow"/></svg></a></div>
@@ -385,6 +388,6 @@
   <div class="f-bot"><span>© 2026 Endwave NextGen Worldwide. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span><span class="mono">AS329846 · Kenya · Uganda · Tanzania</span>
     <div class="f-soc"><a href="mailto:kenya@endwaveafrica.com" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a><a href="https://wa.me/254799611864" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a></div></div>
 </div></footer>
-<script src="script.js?v=11003a63"></script>
+<script src="script.js?v=c51aaabb"></script>
 </body>
 </html>
