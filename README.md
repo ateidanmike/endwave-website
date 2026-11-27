@@ -21,7 +21,7 @@ Shared files: `styles.css`, `script.js`, `assets/`.
 
 | Path | Tool |
 |---|---|
-| `tools/content-studio/` | Content studio: 11 social post templates (service spotlight, promo, tip carousel, go-live, network notice, event, coverage, testimonial, milestone, hiring, holiday) in four sizes with captions, plus an email signature generator and an A4 capacity quote. PDF and .zip downloads load jsPDF and JSZip from cdnjs. |
+| `tools/content-studio/` | Content studio: 12 social post templates (service spotlight, capacity pricing rate card, promo, tip carousel, go-live, network notice, event, coverage, testimonial, milestone, hiring, holiday) in four sizes with captions, plus an email signature generator and an A4 capacity quote. PDF and .zip downloads load jsPDF and JSZip from cdnjs. |
 | `tools/partnership-generator/` | Partnership announcement generator: square, portrait, story and LinkedIn/X posts as PNG, plus platform captions. Self-contained and works offline. Not linked from the site and marked `noindex`. |
 
 ## Platform links
