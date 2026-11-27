@@ -193,6 +193,35 @@ input[type=range]{width:100%;accent-color:var(--orange)}
 #post .k-map{width:4.2em;height:4.2em;color:var(--acc);filter:drop-shadow(0 .3em .6em rgba(255,106,0,.25))}
 #post .k-map path{fill:currentColor}
 
+#post .k-rate{padding:.45em .6em;width:100%}
+#post .k-rate table{width:100%;border-collapse:collapse;font-size:1em}
+#post .rate-l{max-width:none!important;width:100%}
+#post .rate-r{width:100%}
+#post.f-square .rate-l,#post.f-landscape .rate-l{flex:0 0 auto!important;width:auto;min-width:max-content}
+#post.f-square .rate-r,#post.f-landscape .rate-r{flex:1 1 0!important;min-width:12em}
+#post .k-ex{display:flex;flex-direction:column;gap:.4em;width:100%;align-items:stretch}
+#post .k-ex .lbl{font-size:.6em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);text-align:center}
+#post .k-ex .ex{display:flex;align-items:center;gap:.4em;background:rgba(22,51,107,.07);border-radius:.6em;padding:.45em .7em;font-size:.82em;font-weight:600;white-space:nowrap}
+#post .k-ex .ex b{margin-left:auto;font-weight:800}
+#post .k-ex .ex small{font-weight:600;color:var(--muted);font-size:.8em}
+#post.dark .k-ex .ex{background:rgba(255,255,255,.08)}
+#post.f-portrait .k-ex,#post.f-story .k-ex{max-width:22em}
+#post .rate-r .k-cta{white-space:normal;text-align:center;justify-content:center}
+#post .k-rate td{padding:.42em .6em}
+#post .k-rate th{text-align:left;font-size:.62em;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.5em .6em;font-weight:700;white-space:nowrap}
+#post .k-rate th small{font-size:.9em;letter-spacing:0;text-transform:none;margin-left:.2em}
+#post .k-rate th .k-flag{height:1.1em}
+#post .k-rate td{padding:.48em .6em;border-top:1px solid rgba(22,51,107,.09);white-space:nowrap}
+#post .k-rate .n{text-align:right}
+#post .k-rate td.n b{font-size:1.12em}
+#post .k-rate tr.hl td{background:linear-gradient(90deg,rgba(255,106,0,.12),rgba(255,154,60,.08))}
+#post .k-rate tr.hl td:first-child{box-shadow:inset .22em 0 0 var(--acc)}
+#post .k-rate tr.hl td.n b{color:var(--acc)}
+#post .k-rate .tag{display:inline-block;margin-left:.5em;background:var(--acc);color:#fff;border-radius:999px;padding:.1em .6em;font-size:.62em;font-weight:800;vertical-align:.15em;letter-spacing:.04em}
+#post .k-rate tr.act td{color:var(--muted);font-size:.85em}
+#post .k-rate tr.act small{font-size:.85em}
+#post.dark .k-rate th,#post.dark .k-rate tr.act td{color:#a9b5d0}
+#post.dark .k-rate td{border-color:rgba(255,255,255,.09)}
 /* dark theme */
 #post.dark{background:var(--navy-950)}
 #post.dark .glow{display:block}
@@ -475,6 +504,43 @@ T.spotlight = {name:"Service spotlight", group:"Every week", nameKey:"svc",
       long:"⚡ " + nm + "\n\n" + tl + "\n\n" + [d.b1,d.b2,d.b3].filter(Boolean).map(function(b){ return "✅ " + b; }).join("\n") + "\n\n👉 " + d.cta}; }
 };
 
+/* ---------- 1b. CAPACITY PRICING (rate card from capacity.html) ---------- */
+var BAND_LABEL = ["50 – 199 Mbps", "200 – 500 Mbps", "501 – 999 Mbps", "1 Gbps +"];
+T.pricing = {name:"Capacity pricing (rate card)", wide:true, group:"Every week", nameKey:"countries",
+  defaults:function(){ return {t1:"Capacity", t2:"Pricing", ebOn:true, eb1:"RATES", eb2:"Dedicated internet capacity", countries:"both", hl:"", hlLabel:"",
+    exMbps:100, exOn:true, actOn:true, tzOn:true, note:"Per Mbps per month, excl. VAT. Indicative until site feasibility is confirmed.", cta:"Get a quote: WhatsApp " + WA,
+    tags:"#Endwave #InternetCapacity #Bandwidth #ISP #Kenya #Uganda"}; },
+  fields:[{sec:"Rate card"}, {k:"countries", type:"select", label:"Show prices for", opts:[["both","Kenya & Uganda"],["ke","Kenya only"],["ug","Uganda only"]],
+      on:function(d){ d.tags = d.countries === "both" ? "#Endwave #InternetCapacity #Bandwidth #ISP #Kenya #Uganda" : "#Endwave #InternetCapacity #Bandwidth #ISP #" + COUNTRY[d.countries]; }},
+    {k:"hl", type:"select", label:"Highlight a tier", half:1, opts:[["","None"],["0","Starter"],["1","Growth"],["2","Pro"],["3","Carrier"]]},
+    {k:"hlLabel", label:"Highlight label", half:1, ph:"e.g. Best for WISPs", show:"hl"},
+    {k:"exOn", type:"check", label:"Show an example monthly price"}, {k:"exMbps", type:"number", label:"Example link size (Mbps)", show:"exOn"},
+    {k:"actOn", type:"check", label:"Show port activation fee"}, {k:"tzOn", type:"check", label:"Show “Tanzania coming soon”", show:function(d){ return d.countries === "both"; }},
+    {k:"note", label:"Small print"}, {k:"cta", label:"Call to action"}].concat(HEAD),
+  header:head,
+  body:function(d){
+    var cs = d.countries === "both" ? ["ke","ug"] : [d.countries], hl = d.hl === "" ? -1 : +d.hl;
+    var th = '<tr><th>Tier</th><th>Link size</th>' + cs.map(function(c){ return '<th class="n">' + flag(c) + esc(RATES[c].cur) + '<small>/Mbps</small></th>'; }).join("") + '</tr>';
+    var rows = BANDS.map(function(b, i){
+      return '<tr class="' + (i === hl ? "hl" : "") + '"><td><b>' + esc(b[0]) + '</b>' + (i === hl && d.hlLabel ? '<span class="tag">' + esc(d.hlLabel) + '</span>' : "") + '</td><td>' + esc(BAND_LABEL[i]) + '</td>' +
+        cs.map(function(c){ return '<td class="n"><b>' + num(RATES[c].rates[i]) + '</b></td>'; }).join("") + '</tr>'; }).join("");
+    var act = d.actOn ? '<tr class="act"><td colspan="2">Port activation <small>(one-time)</small></td>' + cs.map(function(c){ return '<td class="n">' + num(RATES[c].act) + '</td>'; }).join("") + '</tr>' : "";
+    var m = Math.max(50, +d.exMbps || 0), bi = band(m);
+    var ex = d.exOn ? '<div class="k-ex">' + cs.map(function(c){ return '<div class="ex">' + flag(c) + '<span>e.g. ' + esc(mlabel(m)) + '</span><b>' + esc(RATES[c].cur) + ' ' + num(m * RATES[c].rates[bi]) + '<small>/month</small></b></div>'; }).join("") + '</div>' : "";
+    var tz = d.countries === "both" && d.tzOn ? '<span style="white-space:nowrap">' + flag("tz") + '<b>Tanzania pricing coming soon.</b></span> ' : "";
+    return '<div class="k-split"><div class="rate-l"><div class="k-card k-rate"><table>' + th + rows + act + '</table></div></div>' +
+      '<div class="rate-r">' + ex + (tz || d.note ? '<p class="k-small">' + tz + esc(d.note) + '</p>' : "") + cta(d.cta) + '</div></div>'; },
+  caption:function(d){
+    var cs = d.countries === "both" ? ["ke","ug"] : [d.countries], m = Math.max(50, +d.exMbps || 0), bi = band(m);
+    var tiers = BANDS.map(function(b, i){ return "• " + b[0] + " (" + BAND_LABEL[i] + "): " + cs.map(function(c){ return RATES[c].cur + " " + num(RATES[c].rates[i]); }).join(" | ") + " per Mbps"; }).join("\n");
+    var from = cs.map(function(c){ return RATES[c].cur + " " + num(RATES[c].rates[3]); }).join(" / ");
+    return {x:"📶 Dedicated capacity from " + from + " per Mbps per month" + (cs.length === 1 ? " in " + COUNTRY[cs[0]] : " in Kenya & Uganda") + ". 50 Mbps to 100 Gbps. " + d.cta,
+      long:"📶 Endwave capacity pricing" + (cs.length === 1 ? " in " + COUNTRY[cs[0]] : "") + "\n\nDedicated, uncontended bandwidth from 50 Mbps to 100 Gbps:\n\n" + tiers +
+        (d.actOn ? "\n• Port activation (one-time): " + cs.map(function(c){ return RATES[c].cur + " " + num(RATES[c].act); }).join(" | ") : "") +
+        (d.exOn ? "\n\nExample: " + mlabel(m) + " = " + cs.map(function(c){ return RATES[c].cur + " " + num(m * RATES[c].rates[bi]) + "/month"; }).join(" | ") + "." : "") +
+        (d.countries === "both" && d.tzOn ? "\n\n🇹🇿 Tanzania pricing coming soon." : "") + "\n\n" + d.note + "\n\n👉 " + d.cta}; }
+};
+
 /* ---------- 2. PROMO / OFFER ---------- */
 T.promo = {name:"Promo / offer", wide:true, group:"Every week", nameKey:"offer",
   defaults:function(){ return {t1:"Limited", t2:"Time Offer", ebOn:true, eb1:"PROMO", eb2:"Wholesale capacity",
@@ -749,7 +815,7 @@ T.quote = {name:"Capacity quote (A4)", group:"Beyond social posts", kind:"quote"
     {k:"by", label:"Prepared by", half:1}, {k:"byRole", label:"Role", half:1}]
 };
 
-var ORDER = ["spotlight","promo","carousel","golive","notice","event","coverage","testimonial","milestone","hiring","holiday","signature","quote"];
+var ORDER = ["spotlight","pricing","promo","carousel","golive","notice","event","coverage","testimonial","milestone","hiring","holiday","signature","quote"];
 
 /* ---------------- text helpers for rich <em> fields ---------------- */
 function richEm(s){ return esc(s).replace(/&lt;em&gt;/g, "<em>").replace(/&lt;\/em&gt;/g, "</em>"); }
