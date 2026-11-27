@@ -17,6 +17,12 @@ Live preview: https://ateidanmike.github.io/endwave-website/
 
 Shared files: `styles.css`, `script.js`, `assets/`.
 
+## Internal tools
+
+| Path | Tool |
+|---|---|
+| `tools/partnership-generator/` | Partnership announcement generator: square, portrait, story and LinkedIn/X posts as PNG, plus platform captions. Self-contained and works offline. Not linked from the site and marked `noindex`. |
+
 ## Platform links
 
 - Billing: https://demo.endwaveafrica.com/login

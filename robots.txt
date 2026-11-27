@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /_src/
+Disallow: /tools/
 
 Sitemap: https://www.endwaveafrica.com/sitemap.xml
